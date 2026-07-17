@@ -1,0 +1,1347 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="light"] {
+  --background: #e8eef3;
+  --foreground: #1a2430;
+  --surface: #f7fafc;
+  --surface-2: #dde5ec;
+  --border: #b8c5d2;
+  --muted: #5c6d80;
+  --accent: #2a8fb0;
+  --accent-strong: #1f7a98;
+  --btn-primary-fg: #f4fafc;
+  --bg-glow-1: #c5dce8;
+  --bg-glow-2: #d4e0c8;
+  --mastery-1-node: color-mix(in srgb, #5b8fad 32%, var(--surface));
+  --mastery-2-node: color-mix(in srgb, #6a9a7a 32%, var(--surface));
+  --mastery-3-node: color-mix(in srgb, #a0885c 32%, var(--surface));
+  --mastery-on: color-mix(in srgb, var(--accent) 32%, var(--surface-2));
+  --trait-level-gear: #1a2430;
+  --trait-level-sigil: #b8860b;
+  --warn: #b45309;
+  --danger: #c23b3b;
+  --trait-slot-h: 1.625rem;
+  --trait-icon-size: 1.125rem;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --background: #0f1419;
+  --foreground: #e8eef4;
+  --surface: #161d26;
+  --surface-2: #1c2530;
+  --border: #2a3544;
+  --muted: #8b9bb0;
+  --accent: #5eb3d4;
+  --accent-strong: #3d8fb0;
+  --btn-primary-fg: #041018;
+  --bg-glow-1: #1a3040;
+  --bg-glow-2: #243018;
+  --mastery-1-node: color-mix(in srgb, #2a4a66 62%, var(--surface));
+  --mastery-2-node: color-mix(in srgb, #2a5540 62%, var(--surface));
+  --mastery-3-node: color-mix(in srgb, #55482a 62%, var(--surface));
+  --mastery-on: color-mix(in srgb, var(--accent) 35%, #1a3348);
+  --trait-level-gear: #e8eef4;
+  --trait-level-sigil: #e8b84a;
+  --warn: #fbbf24;
+  --danger: #e85a5a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, var(--bg-glow-1) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, var(--bg-glow-2) 0%, transparent 50%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  min-height: 100%;
+}
+
+.font-prewarm {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: pre;
+  border: 0;
+  pointer-events: none;
+  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: transparent;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  padding: 1.25rem;
+  backdrop-filter: blur(6px);
+}
+
+.panel-title {
+  font-family: var(--font-display), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.btn-primary {
+  border-radius: 0.5rem;
+  background: var(--accent-strong);
+  color: var(--btn-primary-fg);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.5rem 0.9rem;
+  transition: background 0.15s ease;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+}
+
+.btn-secondary {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--foreground);
+  font-size: 0.875rem;
+  padding: 0.5rem 0.9rem;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--surface-2) 70%, var(--accent) 15%);
+}
+
+.btn-secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dirty-dot {
+  display: inline-block;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 9999px;
+  background: #e6a817;
+  box-shadow: 0 0 0 1px color-mix(in srgb, #e6a817 35%, transparent);
+  flex: 0 0 auto;
+}
+
+.share-link-input {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.build-grid {
+  display: grid;
+  grid-template-columns: minmax(13.5rem, 0.95fr) minmax(0, 3fr);
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .build-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.build-main {
+  display: grid;
+  grid-template-columns: minmax(18rem, 1.25fr) minmax(0, 2.2fr);
+  gap: 0.5rem;
+  align-items: start;
+}
+
+.build-char-col {
+  min-width: 0;
+}
+
+.board-table-sigils th,
+.board-table-sigils td {
+  padding: 0.15rem 0.12rem;
+}
+
+.board-table-sigils .trait-pick {
+  gap: 0.15rem;
+}
+
+.board-table-sigils .trait-slot {
+  padding: 0 0.2rem;
+}
+
+.board-table-sigils td.sigil-index {
+  width: 1.1rem;
+  padding-left: 0.1rem;
+  padding-right: 0.05rem;
+}
+
+.build-bottom-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 1fr)
+    minmax(11.5rem, 0.72fr)
+    minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: start;
+}
+
+@media (max-width: 960px) {
+  .build-bottom-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 960px) {
+  .build-main {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.board-block {
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+}
+
+.board-head {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+  padding: 0.35rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.board-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.75rem;
+}
+
+.board-table th,
+.board-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  padding: 0.2rem 0.3rem;
+  vertical-align: middle;
+}
+
+.board-table-slots tbody tr {
+  height: calc(var(--trait-slot-h) + 0.4rem + 1px);
+}
+
+.board-table-slots tbody td {
+  height: calc(var(--trait-slot-h) + 0.4rem + 1px);
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+}
+
+.board-table th {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-align: left;
+}
+
+.board-table tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--surface-2) 45%, transparent);
+}
+
+.mastery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  padding: 0.35rem;
+  background: color-mix(in srgb, var(--surface-2) 55%, transparent);
+}
+
+.mastery-dir {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.mastery-dir:nth-child(1) {
+  border-color: color-mix(in srgb, #5b8fad 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #5b8fad 70%, transparent);
+}
+
+.mastery-dir:nth-child(1) .board-head {
+  background: color-mix(in srgb, #5b8fad 22%, var(--surface-2));
+}
+
+.mastery-dir:nth-child(1) .mastery-node {
+  background: var(--mastery-1-node);
+}
+
+.mastery-dir:nth-child(2) {
+  border-color: color-mix(in srgb, #6a9a7a 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #6a9a7a 70%, transparent);
+}
+
+.mastery-dir:nth-child(2) .board-head {
+  background: color-mix(in srgb, #6a9a7a 22%, var(--surface-2));
+}
+
+.mastery-dir:nth-child(2) .mastery-node {
+  background: var(--mastery-2-node);
+}
+
+.mastery-dir:nth-child(3) {
+  border-color: color-mix(in srgb, #a0885c 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #a0885c 70%, transparent);
+}
+
+.mastery-dir:nth-child(3) .board-head {
+  background: color-mix(in srgb, #a0885c 22%, var(--surface-2));
+}
+
+.mastery-dir:nth-child(3) .mastery-node {
+  background: var(--mastery-3-node);
+}
+
+.mastery-tier {
+  border-bottom: 1px solid var(--border);
+}
+
+.mastery-tier:last-child {
+  border-bottom: none;
+}
+
+.mastery-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  padding: 1px;
+}
+
+.mastery-node {
+  color: var(--foreground);
+  font-size: 0.62rem;
+  line-height: 1.2;
+  padding: 0.28rem 0.2rem;
+  text-align: center;
+  word-break: break-all;
+  transition: filter 0.1s ease, outline-color 0.1s ease;
+}
+
+.mastery-node:hover {
+  filter: brightness(1.12);
+}
+
+.mastery-node.on {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+  background: var(--mastery-on) !important;
+  font-weight: 600;
+}
+
+.board-block label > span:first-child {
+  font-size: 0.65rem;
+}
+
+.board-block select {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.35rem;
+}
+
+.trait-pick {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 0;
+  width: 100%;
+}
+
+.trait-pick-control {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.trait-icon-slot {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--trait-icon-size);
+  height: var(--trait-icon-size);
+  min-width: var(--trait-icon-size);
+  min-height: var(--trait-icon-size);
+  border-radius: 0.15rem;
+  background: color-mix(in srgb, var(--surface-2) 80%, transparent);
+  overflow: hidden;
+}
+
+.trait-icon-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trait-option {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  width: 100%;
+  padding: 0.25rem 0.5rem;
+  text-align: left;
+  font-size: 0.75rem;
+  line-height: 1.25;
+}
+
+.trait-option:hover {
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+.trait-slot {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: var(--trait-slot-h);
+  min-height: var(--trait-slot-h);
+  max-height: var(--trait-slot-h);
+  margin: 0;
+  padding: 0 0.375rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--surface);
+  color: var(--foreground);
+  font-size: 0.75rem;
+  line-height: calc(var(--trait-slot-h) - 2px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.trait-slot:focus {
+  border-color: var(--accent);
+}
+
+.trait-slot--invalid,
+.trait-pick--invalid .trait-slot {
+  border-color: color-mix(in srgb, var(--danger) 70%, var(--border));
+  background: color-mix(in srgb, var(--danger) 22%, var(--surface));
+}
+
+.trait-slot--invalid:focus,
+.trait-pick--invalid .trait-slot:focus {
+  border-color: var(--danger);
+}
+
+.trait-slot-muted {
+  color: var(--muted);
+}
+
+.trait-fixed {
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--muted) 55%, transparent);
+  background: color-mix(in srgb, var(--muted) 12%, var(--surface-2));
+  color: color-mix(in srgb, var(--foreground) 72%, var(--muted));
+  cursor: default;
+  user-select: none;
+}
+
+.trait-totals {
+  max-height: min(85vh, 56rem);
+  overflow: auto;
+}
+
+.trait-totals-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.trait-totals-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 70%, transparent);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+}
+
+.trait-totals-row:nth-child(even) {
+  background: color-mix(in srgb, var(--surface-2) 40%, transparent);
+}
+
+.trait-totals-name {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.trait-totals-levels {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.2rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.trait-totals-slv {
+  font-size: 0.7rem;
+  color: var(--muted);
+  margin-right: 0.1rem;
+}
+
+.trait-level-gear {
+  color: var(--trait-level-gear);
+  font-weight: 600;
+}
+
+.trait-level-plus {
+  color: var(--muted);
+  font-size: 0.92em;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.trait-level-sigil {
+  color: var(--trait-level-sigil);
+  font-weight: 600;
+}
+
+.trait-level-max {
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-left: 0.15rem;
+}
+
+.text-warn {
+  color: var(--warn);
+}
+
+.export-card {
+  box-sizing: border-box;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.export-card--landscape {
+  width: 920px;
+  /* 与因子栏单格 trait（图标+名）同宽，底栏四格共用 */
+  --export-trait-slot-w: 5.5rem;
+  --export-slot-lv-w: 2.15rem;
+}
+
+.export-card--portrait {
+  /* 收窄总宽，压低横向留白 */
+  width: 240px;
+  gap: 0.18rem;
+  padding: 0.22rem;
+  --export-trait-slot-w: 4.6rem;
+  --export-slot-lv-w: 1.85rem;
+}
+
+.export-portrait-equip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.16rem;
+  align-items: start;
+}
+
+.export-header-portrait-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.12rem;
+}
+
+.export-portrait-char-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.22rem;
+}
+
+.export-card--portrait .export-header {
+  gap: 0.35rem;
+  padding: 0.05rem 0.1rem 0.22rem;
+}
+
+.export-card--portrait .export-title {
+  font-size: 0.78rem;
+}
+
+.export-card--portrait .export-character-name {
+  font-size: 0.68rem;
+}
+
+.export-card--portrait .export-note {
+  font-size: 0.62rem;
+  padding: 0.1rem 0 0;
+}
+
+.export-card--portrait .export-trait-grid {
+  gap: 0.04rem 0.18rem;
+  padding: 0.12rem 0.14rem;
+}
+
+.export-card--portrait .export-block .export-trait-grid .export-trait-row {
+  grid-template-columns: auto minmax(0, 1fr) max-content;
+  column-gap: 0.18rem;
+  padding: 0.05rem 0;
+  /* 与横版接近，窄宽不压字号 */
+  font-size: 0.55rem;
+}
+
+.export-card--portrait .export-block .export-trait-grid .export-trait-levels {
+  font-size: 0.48rem;
+  gap: 0.04rem;
+}
+
+.export-card--portrait
+  .export-block
+  .export-trait-grid
+  .export-trait-levels
+  .trait-totals-slv {
+  font-size: 0.4rem;
+  margin-right: 0.04rem;
+}
+
+.export-card--portrait
+  .export-block
+  .export-trait-grid
+  .export-trait-levels
+  .trait-level-plus {
+  font-size: 0.92em;
+  font-weight: 400;
+}
+
+.export-card--portrait .export-slot-line {
+  font-size: 0.55rem;
+  gap: 0.14rem;
+}
+
+.export-card--portrait .export-block-head {
+  padding: 0.1rem 0.16rem;
+  font-size: 0.55rem;
+}
+
+/* 竖版专精：保持游戏内两列节点；避开左侧色条裁切 */
+.export-card--portrait .export-mastery-dir {
+  padding-left: 3px;
+}
+
+.export-card--portrait .export-mastery-dir-head {
+  font-size: 0.55rem;
+  padding: 0.1rem 0.14rem;
+}
+
+.export-card--portrait .export-mastery-tier-label {
+  font-size: 0.45rem;
+  padding: 0.05rem 0.12rem;
+  text-align: center;
+}
+
+.export-card--portrait .export-mastery-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  gap: 1px;
+  background: var(--border);
+  padding: 1px;
+}
+
+.export-card--portrait .export-mastery-node {
+  width: auto;
+  box-sizing: border-box;
+  padding: 0.14rem 0.1rem;
+  font-size: 0.45rem;
+}
+
+.export-card--portrait .export-equip-traits {
+  gap: 0.04rem;
+  padding: 0.1rem 0.14rem 0.12rem;
+}
+
+.export-card--portrait .export-sigil-list {
+  gap: 0.05rem;
+  padding: 0.1rem 0.12rem;
+}
+
+.export-card--portrait .export-sigil-row {
+  grid-template-columns:
+    0.7rem
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+  gap: 0.12rem;
+}
+
+.export-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: color-mix(in srgb, #0a1018 55%, transparent);
+}
+
+.export-preview-panel {
+  max-width: min(96vw, 980px);
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: 0 12px 40px color-mix(in srgb, #000 35%, transparent);
+}
+
+.export-preview-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.export-preview-scroll {
+  overflow: auto;
+  max-height: calc(92vh - 3rem);
+  background:
+    radial-gradient(ellipse 80% 50% at 20% -10%, var(--bg-glow-1) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 90% 10%, var(--bg-glow-2) 0%, transparent 50%),
+    var(--background);
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+}
+
+.export-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.1rem 0.2rem 0.35rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.export-header--portrait {
+  justify-content: flex-start;
+}
+
+.export-header-left {
+  min-width: 0;
+  flex: 1;
+}
+
+.export-title {
+  font-family: var(--font-display), serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+}
+
+.export-header-note {
+  margin-top: 0.1rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+  word-break: break-word;
+}
+
+.export-qr {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.export-qr img {
+  display: block;
+  border-radius: 0.2rem;
+  background: #fff;
+  padding: 0.12rem;
+}
+
+.export-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0.75rem 0 0.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.export-block {
+  border: 1px solid var(--border);
+  border-radius: 0.375rem;
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  min-width: 0;
+  overflow: hidden;
+}
+
+.export-block-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem;
+  padding: 0.2rem 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
+}
+
+.export-empty {
+  padding: 0.35rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.export-character {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.4rem;
+}
+
+.export-character-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.export-note {
+  margin-top: 0.1rem;
+  font-size: 0.65rem;
+  color: var(--muted);
+}
+
+.export-trait-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.06rem 0.4rem;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0.3rem;
+}
+
+/* 图标 | 名称（伸展）| 等级（右对齐）；首列 auto 避免 16px 图标挤进文字列 */
+.export-trait-row {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) max-content;
+  align-items: center;
+  column-gap: 0.2rem;
+  min-width: 0;
+  font-size: 0.6rem;
+  line-height: 1.2;
+}
+
+.export-trait-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.export-trait-levels {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: flex-end;
+  gap: 0.06rem;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  font-size: 0.9em;
+}
+
+.export-sigil-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  padding: 0.2rem 0.25rem;
+}
+
+.export-sigil-list--dual {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.08rem 0.25rem;
+}
+
+.export-sigil-row {
+  display: grid;
+  grid-template-columns: 0.95rem 1fr 1fr;
+  gap: 0.15rem;
+  align-items: center;
+}
+
+.export-sigil-idx {
+  font-size: 0.55rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.export-slot-line {
+  display: flex;
+  align-items: center;
+  gap: 0.18rem;
+  min-width: 0;
+  font-size: 0.6rem;
+  line-height: 1.2;
+}
+
+.export-slot-line.muted {
+  color: var(--muted);
+}
+
+.export-slot-lv {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.55rem;
+  flex-shrink: 0;
+}
+
+.export-equip-title {
+  padding: 0.15rem 0.3rem 0;
+  font-size: 0.62rem;
+  font-weight: 500;
+}
+
+.export-equip-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.08rem;
+  padding: 0.2rem 0.3rem 0.25rem;
+}
+
+.export-landscape-shell {
+  display: grid;
+  grid-template-columns: minmax(17rem, 1fr) minmax(0, 2.55fr);
+  gap: 0.35rem;
+  align-items: start;
+}
+
+.export-landscape-totals {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.export-landscape-note {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: var(--muted);
+  word-break: break-word;
+  padding: 0.28rem 0.15rem;
+}
+
+.export-landscape-totals .export-block {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.export-trait-cols {
+  display: flex;
+  flex-direction: row;
+  gap: 0.45rem;
+  padding: 0.2rem 0.35rem 0.25rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-content: flex-start;
+}
+
+.export-trait-cols--dual .export-trait-col {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.export-trait-col {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.export-landscape-totals .export-trait-row {
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) max-content;
+  align-items: center;
+  column-gap: 0.2rem;
+  padding: 0.06rem 0;
+  font-size: 0.55rem;
+}
+
+.export-landscape-totals .export-trait-name {
+  flex: unset;
+  max-width: none;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.export-landscape-totals .export-trait-levels {
+  margin-left: 0;
+  justify-content: flex-end;
+  text-align: right;
+  min-width: 0;
+  font-size: 0.48rem;
+  gap: 0.05rem;
+}
+
+.export-landscape-totals .export-trait-levels .trait-totals-slv {
+  font-size: 0.42rem;
+  margin-right: 0.05rem;
+}
+
+.export-landscape-totals .export-trait-levels .trait-level-plus {
+  font-size: 0.92em;
+  font-weight: 400;
+}
+
+.export-landscape-right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.export-landscape-top {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 2.4fr);
+  gap: 0.3rem;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.export-landscape-mid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  min-height: 0;
+}
+
+.export-landscape-mid .export-block:last-child {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.export-landscape-mid .export-sigil-list {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  gap: 0.1rem;
+  padding: 0.15rem 0.2rem 0.2rem;
+  min-height: 0;
+}
+
+.export-card--landscape .export-sigil-row {
+  grid-template-columns:
+    0.8rem
+    var(--export-trait-slot-w)
+    var(--export-trait-slot-w);
+  gap: 0.18rem;
+  justify-content: start;
+}
+
+.export-card--landscape .export-sigil-row .export-slot-line {
+  width: var(--export-trait-slot-w);
+  gap: 0.1rem;
+  font-size: 0.55rem;
+}
+
+.export-card--landscape .export-character {
+  padding: 0.2rem 0.28rem;
+  flex-shrink: 0;
+}
+
+.export-landscape-mastery {
+  min-width: 0;
+  min-height: 0;
+}
+
+.export-landscape-mastery .export-mastery-grid {
+  padding: 0;
+  height: 100%;
+  align-content: start;
+}
+
+.export-card--landscape .export-mastery-dir {
+  flex: none;
+}
+
+.export-landscape-brand {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 0.3rem;
+  padding: 0.05rem 0.1rem;
+  min-width: 0;
+  background: transparent;
+  border: none;
+}
+
+.export-landscape-brand-text {
+  min-width: 0;
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.export-landscape-site-url {
+  font-size: 0.5rem;
+  line-height: 1.2;
+  color: var(--muted);
+  text-align: right;
+  word-break: break-all;
+  max-width: 9rem;
+}
+
+.export-landscape-brand .export-title {
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.export-landscape-brand .export-header-note {
+  margin-top: 0.08rem;
+  font-size: 0.55rem;
+  line-height: 1.25;
+}
+
+.export-landscape-brand .export-qr {
+  flex-shrink: 0;
+}
+
+/* 武器/祝福 = trait 格 + 等级；召唤/能力 = 单格 trait 宽；信息栏吃剩余 */
+.export-landscape-bottom {
+  display: grid;
+  grid-template-columns:
+    calc(var(--export-trait-slot-w) + var(--export-slot-lv-w) + 0.35rem)
+    calc(var(--export-trait-slot-w) + var(--export-slot-lv-w) + 0.35rem)
+    var(--export-trait-slot-w)
+    var(--export-trait-slot-w)
+    minmax(0, 1fr);
+  gap: 0.25rem;
+  align-items: stretch;
+  min-width: 0;
+}
+
+.export-landscape-bottom > .export-block {
+  width: 100%;
+  min-width: 0;
+  align-self: start;
+}
+
+.export-landscape-bottom > .export-block .export-slot-line {
+  width: 100%;
+}
+
+.export-landscape-bottom > .export-landscape-brand {
+  width: 100%;
+  min-width: 0;
+  align-self: stretch;
+  justify-self: stretch;
+}
+
+.export-card--landscape .export-slot-lv {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: var(--export-slot-lv-w);
+  text-align: right;
+}
+
+.export-card--landscape .export-equip-traits {
+  gap: 0.05rem;
+  padding: 0.12rem 0.2rem 0.18rem;
+}
+
+.export-card--landscape .export-equip-title {
+  padding: 0.1rem 0.2rem 0;
+  font-size: 0.55rem;
+}
+
+.export-mastery-budget {
+  font-weight: 400;
+  font-size: 0.58rem;
+  color: var(--muted);
+}
+
+.export-mastery-budget-bar {
+  font-size: 0.62rem;
+  color: var(--muted);
+  padding: 0.05rem 0.15rem;
+}
+
+.export-mastery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25rem;
+  padding: 0.25rem;
+}
+
+.export-mastery-dir {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  display: flex;
+  flex-direction: column;
+}
+
+.export-mastery-dir--0 {
+  border-color: color-mix(in srgb, #5b8fad 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #5b8fad 70%, transparent);
+}
+
+.export-mastery-dir--0 .export-mastery-dir-head {
+  background: color-mix(in srgb, #5b8fad 22%, var(--surface-2));
+}
+
+.export-mastery-dir--0 .export-mastery-node {
+  background: var(--mastery-1-node);
+}
+
+.export-mastery-dir--1 {
+  border-color: color-mix(in srgb, #6a9a7a 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #6a9a7a 70%, transparent);
+}
+
+.export-mastery-dir--1 .export-mastery-dir-head {
+  background: color-mix(in srgb, #6a9a7a 22%, var(--surface-2));
+}
+
+.export-mastery-dir--1 .export-mastery-node {
+  background: var(--mastery-2-node);
+}
+
+.export-mastery-dir--2 {
+  border-color: color-mix(in srgb, #a0885c 45%, var(--border));
+  box-shadow: inset 3px 0 0 color-mix(in srgb, #a0885c 70%, transparent);
+}
+
+.export-mastery-dir--2 .export-mastery-dir-head {
+  background: color-mix(in srgb, #a0885c 22%, var(--surface-2));
+}
+
+.export-mastery-dir--2 .export-mastery-node {
+  background: var(--mastery-3-node);
+}
+
+.export-mastery-dir-head {
+  padding: 0.18rem 0.25rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.export-mastery-bonus {
+  margin-top: 0.05rem;
+  font-size: 0.52rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.export-mastery-tier {
+  border-bottom: 1px solid var(--border);
+}
+
+.export-mastery-tier:last-child {
+  border-bottom: none;
+}
+
+.export-mastery-tier-label {
+  padding: 0.08rem 0.2rem;
+  font-size: 0.5rem;
+  color: var(--muted);
+  text-align: center;
+}
+
+.export-mastery-nodes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--border);
+  padding: 1px;
+}
+
+.export-card--landscape .export-mastery-nodes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.export-card--landscape .export-mastery-node {
+  padding: 0.12rem 0.08rem;
+  font-size: 0.52rem;
+}
+
+.export-mastery-node {
+  color: var(--foreground);
+  font-size: 0.52rem;
+  line-height: 1.15;
+  padding: 0.14rem 0.1rem;
+  text-align: center;
+}
+
+.export-mastery-node.on {
+  outline: 1px solid var(--accent);
+  outline-offset: -1px;
+  background: var(--mastery-on) !important;
+  font-weight: 600;
+}

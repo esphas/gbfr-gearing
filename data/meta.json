@@ -1,0 +1,29 @@
+{
+  "game": "granblue-fantasy-relink",
+  "catalogVersion": 1,
+  "localeDefault": "zh-CN",
+  "slots": {
+    "sigils": 12,
+    "skills": 4,
+    "summons": 4
+  },
+  "sigilDefaultLevel": 15,
+  "masteryPoints": {
+    "tier1": 10,
+    "tier2": 10,
+    "tier3": 10,
+    "ex": 20
+  },
+  "masteryBonusThresholds": {
+    "tier1": 3,
+    "tier2": 6,
+    "tier3": 6
+  },
+  "masteryDirectionCounts": {
+    "tier1": 4,
+    "tier2": 8,
+    "tier3": 8,
+    "ex": 10
+  },
+  "noteMaxLength": 64
+}

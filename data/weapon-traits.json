@@ -1,0 +1,212 @@
+{
+  "defender": {
+    "traits": [
+      {
+        "id": "hp",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "dmg-cap-ecru",
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      },
+      {
+        "id": "unbound-exertion",
+        "level": 15
+      }
+    ],
+    "pool": [
+      "greater-aegis",
+      "garrison",
+      "stronghold",
+      "regen",
+      "improved-guard",
+      "dizzy-resistance",
+      "poison-resistance",
+      "burn-resistance",
+      "blight-resistance"
+    ]
+  },
+  "executioner": {
+    "traits": [
+      {
+        "id": "weak-point-dmg",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "dmg-cap-cardinal",
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      },
+      {
+        "id": "unbound-technique",
+        "level": 15
+      }
+    ],
+    "pool": [
+      "break-assassin",
+      "quick-cooldown",
+      "uplift",
+      "nimble-onslaught",
+      "glaciate-resistance",
+      "atk-down-resistance",
+      "def-down-resistance",
+      "autorevive"
+    ]
+  },
+  "stinger": {
+    "traits": [
+      {
+        "id": "critical-hit-rate",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "dmg-cap-cobalt",
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      },
+      {
+        "id": "unbound-technique",
+        "level": 15
+      }
+    ],
+    "pool": [
+      "critical-hit-dmg",
+      "life-on-the-line",
+      "overdrive-assassin",
+      "dodge-payback",
+      "firm-stance",
+      "slow-resistance",
+      "skill-sealed-resistance",
+      "darkflame-resistance",
+      "guts"
+    ]
+  },
+  "stunner": {
+    "traits": [
+      {
+        "id": "stun-power",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "dmg-cap-sage",
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      },
+      {
+        "id": "unbound-exertion",
+        "level": 15
+      }
+    ],
+    "pool": [
+      "stamina",
+      "linked-together",
+      "guard-payback",
+      "aegis",
+      "held-under-resistance",
+      "sandtomb-resistance",
+      "paralysis-resistance",
+      "sba-sealed-resistance",
+      "potion-hoarder"
+    ]
+  },
+  "ascension": {
+    "traits": [
+      {
+        "id": "atk",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "supernova",
+        "level": 15
+      },
+      {
+        "id": "sigil-booster",
+        "level": 2
+      },
+      {
+        "id": "unbound-strike",
+        "level": 15
+      }
+    ],
+    "pool": [
+      "hp",
+      "critical-hit-rate",
+      "stun-power",
+      "linked-together",
+      "supplementary-dmg",
+      "combo-finisher-dmg",
+      "drain",
+      "precise-wrath",
+      "precise-resilience"
+    ]
+  },
+  "terminus": {
+    "traits": [
+      {
+        "id": "catastrophe-nova",
+        "level": 35
+      },
+      {
+        "id": null,
+        "level": 25
+      },
+      {
+        "id": "dmg-cap",
+        "level": 15
+      },
+      {
+        "id": "sigil-booster",
+        "level": 1
+      },
+      {
+        "id": "unbound-master",
+        "level": 55
+      }
+    ],
+    "pool": [
+      "enmity",
+      "stamina",
+      "tyranny",
+      "injury-to-insult",
+      "overdrive-assassin",
+      "guard-payback",
+      "glass-cannon",
+      "regen",
+      "drain",
+      "nimble-defense"
+    ]
+  }
+}

@@ -1,0 +1,234 @@
+{
+  "appTitle": {
+    "zh-CN": "GBFR 配装器",
+    "en": "GBFR Builder"
+  },
+  "loading": {
+    "zh-CN": "加载配装中…",
+    "en": "Loading build…"
+  },
+  "shareLink": {
+    "zh-CN": "生成分享链接",
+    "en": "Share link"
+  },
+  "saveImage": {
+    "zh-CN": "保存图片",
+    "en": "Save image"
+  },
+  "saveImageLandscape": {
+    "zh-CN": "横版",
+    "en": "Landscape"
+  },
+  "saveImagePortrait": {
+    "zh-CN": "竖版",
+    "en": "Portrait"
+  },
+  "saveImagePreview": {
+    "zh-CN": "导出预览",
+    "en": "Export preview"
+  },
+  "saveImageDownload": {
+    "zh-CN": "保存",
+    "en": "Save"
+  },
+  "saveImageClosePreview": {
+    "zh-CN": "关闭",
+    "en": "Close"
+  },
+  "saveImageWorking": {
+    "zh-CN": "导出中…",
+    "en": "Exporting…"
+  },
+  "saveImageFailed": {
+    "zh-CN": "导出失败",
+    "en": "Export failed"
+  },
+  "shareCopy": {
+    "zh-CN": "复制",
+    "en": "Copy"
+  },
+  "dirtyHint": {
+    "zh-CN": "有未同步到链接的修改",
+    "en": "Changes not yet in share link"
+  },
+  "reset": {
+    "zh-CN": "重置",
+    "en": "Reset"
+  },
+  "notePlaceholder": {
+    "zh-CN": "备注",
+    "en": "Note"
+  },
+  "copied": {
+    "zh-CN": "已复制",
+    "en": "Copied"
+  },
+  "copyFailed": {
+    "zh-CN": "复制失败",
+    "en": "Copy failed"
+  },
+  "character": {
+    "zh-CN": "角色",
+    "en": "Character"
+  },
+  "sigils": {
+    "zh-CN": "因子",
+    "en": "Sigils"
+  },
+  "summons": {
+    "zh-CN": "召唤石",
+    "en": "Summons"
+  },
+  "weapon": {
+    "zh-CN": "武器",
+    "en": "Weapon"
+  },
+  "wrightstone": {
+    "zh-CN": "祝福",
+    "en": "Wrightstone"
+  },
+  "abilities": {
+    "zh-CN": "能力",
+    "en": "Abilities"
+  },
+  "mastery": {
+    "zh-CN": "专精",
+    "en": "Mastery"
+  },
+  "traitTotals": {
+    "zh-CN": "技能总览",
+    "en": "Trait totals"
+  },
+  "noTraits": {
+    "zh-CN": "暂无技能",
+    "en": "No traits"
+  },
+  "selectWeapon": {
+    "zh-CN": "选择武器…",
+    "en": "Select weapon…"
+  },
+  "selectWrightstone": {
+    "zh-CN": "选择祝福…",
+    "en": "Select wrightstone…"
+  },
+  "fixedTrait": {
+    "zh-CN": "固定技能",
+    "en": "Fixed trait"
+  },
+  "clearMastery": {
+    "zh-CN": "清空专精",
+    "en": "Clear mastery"
+  },
+  "noMasteryData": {
+    "zh-CN": "无专精数据",
+    "en": "No mastery data"
+  },
+  "tier1": {
+    "zh-CN": "一阶",
+    "en": "Tier 1"
+  },
+  "tier2": {
+    "zh-CN": "二阶",
+    "en": "Tier 2"
+  },
+  "tier3": {
+    "zh-CN": "三阶",
+    "en": "Tier 3"
+  },
+  "tierEx": {
+    "zh-CN": "EX",
+    "en": "EX"
+  },
+  "tier1Bonus": {
+    "zh-CN": "一阶+",
+    "en": "T1+"
+  },
+  "tier2Bonus": {
+    "zh-CN": "二阶+",
+    "en": "T2+"
+  },
+  "tier3Bonus": {
+    "zh-CN": "三阶+",
+    "en": "T3+"
+  },
+  "emptyOption": {
+    "zh-CN": "（空）",
+    "en": "(empty)"
+  },
+  "searchPlaceholder": {
+    "zh-CN": "搜索…",
+    "en": "Search…"
+  },
+  "noMatch": {
+    "zh-CN": "无匹配",
+    "en": "No match"
+  },
+  "themeLight": {
+    "zh-CN": "浅色",
+    "en": "Light"
+  },
+  "themeDark": {
+    "zh-CN": "深色",
+    "en": "Dark"
+  },
+  "themeToDark": {
+    "zh-CN": "切换到深色",
+    "en": "Switch to dark"
+  },
+  "themeToLight": {
+    "zh-CN": "切换到浅色",
+    "en": "Switch to light"
+  },
+  "themeAriaDark": {
+    "zh-CN": "切换到深色主题",
+    "en": "Switch to dark theme"
+  },
+  "themeAriaLight": {
+    "zh-CN": "切换到浅色主题",
+    "en": "Switch to light theme"
+  },
+  "localeZh": {
+    "zh-CN": "中文",
+    "en": "中文"
+  },
+  "localeEn": {
+    "zh-CN": "EN",
+    "en": "EN"
+  },
+  "localeAria": {
+    "zh-CN": "切换界面语言",
+    "en": "Switch language"
+  },
+  "unknown": {
+    "zh-CN": "未知",
+    "en": "Unknown"
+  },
+  "unknownWithId": {
+    "zh-CN": "未知（{id}）",
+    "en": "Unknown ({id})"
+  },
+  "decodeInvalid": {
+    "zh-CN": "无效的配装数据",
+    "en": "Invalid build data"
+  },
+  "decodeValidate": {
+    "zh-CN": "配装数据校验失败",
+    "en": "Build validation failed"
+  },
+  "decodeParse": {
+    "zh-CN": "无法解析配装链接",
+    "en": "Could not parse share link"
+  },
+  "unsupportedVersion": {
+    "zh-CN": "不支持的配装版本：{v}",
+    "en": "Unsupported build version: {v}"
+  },
+  "versionMissing": {
+    "zh-CN": "(缺失)",
+    "en": "(missing)"
+  },
+  "missingBuild": {
+    "zh-CN": "链接缺少配装数据",
+    "en": "Share link is missing build data"
+  }
+}

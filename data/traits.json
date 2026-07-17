@@ -1,0 +1,1034 @@
+[
+  {
+    "id": "sigil-booster",
+    "codecIndex": 0,
+    "name": {
+      "zh-CN": "因子强化",
+      "en": "Sigil Booster"
+    },
+    "icon": "/assets/traits/special.webp",
+    "maxLevel": 2,
+    "restricted": true
+  },
+  {
+    "id": "atk",
+    "codecIndex": 1,
+    "name": {
+      "zh-CN": "攻击力",
+      "en": "Atk"
+    },
+    "maxLevel": 50
+  },
+  {
+    "id": "hp",
+    "codecIndex": 2,
+    "name": {
+      "zh-CN": "体力",
+      "en": "HP"
+    },
+    "maxLevel": 50
+  },
+  {
+    "id": "critical-hit-rate",
+    "codecIndex": 3,
+    "name": {
+      "zh-CN": "暴击率",
+      "en": "Critical Hit Rate"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "stun-power",
+    "codecIndex": 4,
+    "name": {
+      "zh-CN": "昏厥",
+      "en": "Stun Power"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "enmity",
+    "codecIndex": 5,
+    "name": {
+      "zh-CN": "背水",
+      "en": "Enmity"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-nyx",
+    "codecIndex": 6,
+    "name": {
+      "zh-CN": "天星之炼",
+      "en": "Celestial Nyx"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "stamina",
+    "codecIndex": 7,
+    "name": {
+      "zh-CN": "热血",
+      "en": "Stamina"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-lumen",
+    "codecIndex": 8,
+    "name": {
+      "zh-CN": "天星之煌",
+      "en": "Celestial Lumen"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "critical-hit-dmg",
+    "codecIndex": 9,
+    "name": {
+      "zh-CN": "暴击伤害",
+      "en": "Critical Hit Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "weak-point-dmg",
+    "codecIndex": 10,
+    "name": {
+      "zh-CN": "弱点攻击",
+      "en": "Weak Point Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 45
+  },
+  {
+    "id": "tyranny",
+    "codecIndex": 11,
+    "name": {
+      "zh-CN": "暴君",
+      "en": "Tyranny"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-terra",
+    "codecIndex": 12,
+    "name": {
+      "zh-CN": "天星之界",
+      "en": "Celestial Terra"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "life-on-the-line",
+    "codecIndex": 13,
+    "name": {
+      "zh-CN": "奋不顾身",
+      "en": "Life On The Line"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-ventus",
+    "codecIndex": 14,
+    "name": {
+      "zh-CN": "天星之止息",
+      "en": "Celestial Ventus"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "dmg-cap",
+    "codecIndex": 15,
+    "name": {
+      "zh-CN": "伤害上限",
+      "en": "Dmg Cap"
+    },
+    "maxLevel": 65
+  },
+  {
+    "id": "skilled-assault",
+    "codecIndex": 16,
+    "name": {
+      "zh-CN": "能力伤害",
+      "en": "Skilled Assault"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "linked-together",
+    "codecIndex": 17,
+    "name": {
+      "zh-CN": "协同攻击",
+      "en": "Linked Together"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "combo-booster",
+    "codecIndex": 18,
+    "name": {
+      "zh-CN": "连击加成",
+      "en": "Combo Booster"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "supplementary-dmg",
+    "codecIndex": 19,
+    "name": {
+      "zh-CN": "追击",
+      "en": "Supplementary Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 45
+  },
+  {
+    "id": "berserker-echo",
+    "codecIndex": 20,
+    "name": {
+      "zh-CN": "狂战士",
+      "en": "Berserker Echo"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "spartan-echo",
+    "codecIndex": 21,
+    "name": {
+      "zh-CN": "斯巴达",
+      "en": "Spartan Echo"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "combo-finisher-dmg",
+    "codecIndex": 22,
+    "name": {
+      "zh-CN": "连击收招",
+      "en": "Combo Finisher Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "charged-attack-dmg",
+    "codecIndex": 23,
+    "name": {
+      "zh-CN": "蓄力攻击",
+      "en": "Charged Attack Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "lucky-charge",
+    "codecIndex": 24,
+    "name": {
+      "zh-CN": "蓄力会心",
+      "en": "Lucky Charge"
+    },
+    "maxLevel": 20
+  },
+  {
+    "id": "quick-charge",
+    "codecIndex": 25,
+    "name": {
+      "zh-CN": "快速蓄力",
+      "en": "Quick Charge"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "concentrated-fire",
+    "codecIndex": 26,
+    "name": {
+      "zh-CN": "集中炮火",
+      "en": "Concentrated Fire"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "throw-dmg",
+    "codecIndex": 27,
+    "name": {
+      "zh-CN": "投掷",
+      "en": "Throw Dmg"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "injury-to-insult",
+    "codecIndex": 28,
+    "name": {
+      "zh-CN": "弱化状态特效",
+      "en": "Injury To Insult"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "overdrive-assassin",
+    "codecIndex": 29,
+    "name": {
+      "zh-CN": "OVERDRIVE特效",
+      "en": "Overdrive Assassin"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-incendo",
+    "codecIndex": 30,
+    "name": {
+      "zh-CN": "天星之焰",
+      "en": "Celestial Incendo"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "break-assassin",
+    "codecIndex": 31,
+    "name": {
+      "zh-CN": "破防特效",
+      "en": "Break Assassin"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "celestial-aqua",
+    "codecIndex": 32,
+    "name": {
+      "zh-CN": "天星之雪",
+      "en": "Celestial Aqua"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "fatebreaker",
+    "codecIndex": 33,
+    "name": {
+      "zh-CN": "浪迹天涯",
+      "en": "Fatebreaker"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "head-start",
+    "codecIndex": 34,
+    "name": {
+      "zh-CN": "先发制人",
+      "en": "Head Start"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "power-hungry",
+    "codecIndex": 35,
+    "name": {
+      "zh-CN": "修罗",
+      "en": "Power Hungry"
+    },
+    "icon": "/assets/traits/offensive-special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "guard-payback",
+    "codecIndex": 36,
+    "name": {
+      "zh-CN": "格挡仇火",
+      "en": "Guard Payback"
+    },
+    "icon": "/assets/traits/payback.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "dodge-payback",
+    "codecIndex": 37,
+    "name": {
+      "zh-CN": "躲避仇火",
+      "en": "Dodge Payback"
+    },
+    "icon": "/assets/traits/payback.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "super-ultimate-perfect-dodge",
+    "codecIndex": 38,
+    "name": {
+      "zh-CN": "超终极精准躲避",
+      "en": "Super Ultimate Perfect Dodge"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "less-is-more",
+    "codecIndex": 39,
+    "name": {
+      "zh-CN": "身无长技",
+      "en": "Less Is More"
+    },
+    "icon": "/assets/traits/offensive-special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "berserker",
+    "codecIndex": 40,
+    "name": {
+      "zh-CN": "穷寇心",
+      "en": "Berserker"
+    },
+    "icon": "/assets/traits/offensive-special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "glass-cannon",
+    "codecIndex": 41,
+    "name": {
+      "zh-CN": "刀上舞",
+      "en": "Glass Cannon"
+    },
+    "icon": "/assets/traits/offensive-special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "roll-of-the-die",
+    "codecIndex": 42,
+    "name": {
+      "zh-CN": "骰子剑",
+      "en": "Roll Of The Die"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "war-elemental",
+    "codecIndex": 43,
+    "name": {
+      "zh-CN": "属性克制转换",
+      "en": "War Elemental"
+    },
+    "icon": "/assets/traits/offensive-special.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "supernova",
+    "codecIndex": 44,
+    "name": {
+      "zh-CN": "超新星",
+      "en": "Supernova"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "catastrophe-nova",
+    "codecIndex": 45,
+    "name": {
+      "zh-CN": "浩劫新星",
+      "en": "Catastrophe Nova"
+    },
+    "icon": "/assets/traits/offensive.webp",
+    "maxLevel": 35,
+    "restricted": true
+  },
+  {
+    "id": "dmg-cap-cardinal",
+    "codecIndex": 46,
+    "name": {
+      "zh-CN": "伤害上限·红天",
+      "en": "Dmg Cap Cardinal"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "dmg-cap-cobalt",
+    "codecIndex": 47,
+    "name": {
+      "zh-CN": "伤害上限·苍天",
+      "en": "Dmg Cap Cobalt"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "dmg-cap-ecru",
+    "codecIndex": 48,
+    "name": {
+      "zh-CN": "伤害上限·轰天",
+      "en": "Dmg Cap Ecru"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "dmg-cap-sage",
+    "codecIndex": 49,
+    "name": {
+      "zh-CN": "伤害上限·疾天",
+      "en": "Dmg Cap Sage"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "unbound-exertion",
+    "codecIndex": 50,
+    "name": {
+      "zh-CN": "超凡奥秘",
+      "en": "Unbound Exertion"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "unbound-technique",
+    "codecIndex": 51,
+    "name": {
+      "zh-CN": "超凡技艺",
+      "en": "Unbound Technique"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "unbound-strike",
+    "codecIndex": 52,
+    "name": {
+      "zh-CN": "超凡强击",
+      "en": "Unbound Strike"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 15,
+    "restricted": true
+  },
+  {
+    "id": "unbound-master",
+    "codecIndex": 53,
+    "name": {
+      "zh-CN": "超凡破限",
+      "en": "Unbound Master"
+    },
+    "icon": "/assets/traits/dmg-cap.webp",
+    "maxLevel": 55,
+    "restricted": true
+  },
+  {
+    "id": "improved-healing",
+    "codecIndex": 54,
+    "name": {
+      "zh-CN": "回复性能",
+      "en": "Improved Healing"
+    },
+    "icon": "/assets/traits/regen.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "regen",
+    "codecIndex": 55,
+    "name": {
+      "zh-CN": "自愈",
+      "en": "Regen"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "divergence",
+    "codecIndex": 56,
+    "name": {
+      "zh-CN": "分歧",
+      "en": "Divergence"
+    },
+    "icon": "/assets/traits/regen.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "drain",
+    "codecIndex": 57,
+    "name": {
+      "zh-CN": "HP吸收",
+      "en": "Drain"
+    },
+    "icon": "/assets/traits/regen.webp",
+    "maxLevel": 45
+  },
+  {
+    "id": "quick-cooldown",
+    "codecIndex": 58,
+    "name": {
+      "zh-CN": "迅捷能力",
+      "en": "Quick Cooldown"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "cascade",
+    "codecIndex": 59,
+    "name": {
+      "zh-CN": "怒涛",
+      "en": "Cascade"
+    },
+    "icon": "/assets/traits/quick-cooldown.webp",
+    "maxLevel": 20
+  },
+  {
+    "id": "uplift",
+    "codecIndex": 60,
+    "name": {
+      "zh-CN": "激昂",
+      "en": "Uplift"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "precise-wrath",
+    "codecIndex": 61,
+    "name": {
+      "zh-CN": "怒发冲冠",
+      "en": "Precise Wrath"
+    },
+    "icon": "/assets/traits/dodge-effect.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "nimble-onslaught",
+    "codecIndex": 62,
+    "name": {
+      "zh-CN": "明镜止水",
+      "en": "Nimble Onslaught"
+    },
+    "icon": "/assets/traits/dodge-effect.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "potent-greens",
+    "codecIndex": 63,
+    "name": {
+      "zh-CN": "万能药",
+      "en": "Potent Greens"
+    },
+    "maxLevel": 15
+  },
+  {
+    "id": "aegis",
+    "codecIndex": 64,
+    "name": {
+      "zh-CN": "守护",
+      "en": "Aegis"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "greater-aegis",
+    "codecIndex": 65,
+    "name": {
+      "zh-CN": "金刚",
+      "en": "Greater Aegis"
+    },
+    "icon": "/assets/traits/aegis.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "garrison",
+    "codecIndex": 66,
+    "name": {
+      "zh-CN": "坚守",
+      "en": "Garrison"
+    },
+    "icon": "/assets/traits/defensive.webp",
+    "maxLevel": 45
+  },
+  {
+    "id": "stronghold",
+    "codecIndex": 67,
+    "name": {
+      "zh-CN": "刚健",
+      "en": "Stronghold"
+    },
+    "icon": "/assets/traits/defensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "steel-nerves",
+    "codecIndex": 68,
+    "name": {
+      "zh-CN": "坚持",
+      "en": "Steel Nerves"
+    },
+    "icon": "/assets/traits/defensive.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "improved-guard",
+    "codecIndex": 69,
+    "name": {
+      "zh-CN": "格挡性能",
+      "en": "Improved Guard"
+    },
+    "icon": "/assets/traits/defensive.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "improved-dodge",
+    "codecIndex": 70,
+    "name": {
+      "zh-CN": "躲避性能",
+      "en": "Improved Dodge"
+    },
+    "icon": "/assets/traits/defensive-special.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "precise-resilience",
+    "codecIndex": 71,
+    "name": {
+      "zh-CN": "抗争",
+      "en": "Precise Resilience"
+    },
+    "icon": "/assets/traits/guard-effect.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "nimble-defense",
+    "codecIndex": 72,
+    "name": {
+      "zh-CN": "凝神",
+      "en": "Nimble Defense"
+    },
+    "icon": "/assets/traits/guard-effect.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "untouchable",
+    "codecIndex": 73,
+    "name": {
+      "zh-CN": "躲避距离",
+      "en": "Untouchable"
+    },
+    "icon": "/assets/traits/defensive-special.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "flight-over-fight",
+    "codecIndex": 74,
+    "name": {
+      "zh-CN": "摇曳步",
+      "en": "Flight Over Fight"
+    },
+    "icon": "/assets/traits/defensive-special.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "firm-stance",
+    "codecIndex": 75,
+    "name": {
+      "zh-CN": "不动",
+      "en": "Firm Stance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "dizzy-resistance",
+    "codecIndex": 76,
+    "name": {
+      "zh-CN": "昏迷抗性",
+      "en": "Dizzy Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "glaciate-resistance",
+    "codecIndex": 77,
+    "name": {
+      "zh-CN": "冰冻抗性",
+      "en": "Glaciate Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "held-under-resistance",
+    "codecIndex": 78,
+    "name": {
+      "zh-CN": "水牢抗性",
+      "en": "Held Under Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "sandtomb-resistance",
+    "codecIndex": 79,
+    "name": {
+      "zh-CN": "泥沙抗性",
+      "en": "Sandtomb Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "poison-resistance",
+    "codecIndex": 80,
+    "name": {
+      "zh-CN": "中毒抗性",
+      "en": "Poison Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "slow-resistance",
+    "codecIndex": 81,
+    "name": {
+      "zh-CN": "缓速抗性",
+      "en": "Slow Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "burn-resistance",
+    "codecIndex": 82,
+    "name": {
+      "zh-CN": "灼热抗性",
+      "en": "Burn Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "paralysis-resistance",
+    "codecIndex": 83,
+    "name": {
+      "zh-CN": "麻痹抗性",
+      "en": "Paralysis Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "blight-resistance",
+    "codecIndex": 84,
+    "name": {
+      "zh-CN": "灾祸抗性",
+      "en": "Blight Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "skill-sealed-resistance",
+    "codecIndex": 85,
+    "name": {
+      "zh-CN": "能力封印抗性",
+      "en": "Skill Sealed Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "sba-sealed-resistance",
+    "codecIndex": 86,
+    "name": {
+      "zh-CN": "奥义封印抗性",
+      "en": "Sba Sealed Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "darkflame-resistance",
+    "codecIndex": 87,
+    "name": {
+      "zh-CN": "异能耐受",
+      "en": "Darkflame Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "atk-down-resistance",
+    "codecIndex": 88,
+    "name": {
+      "zh-CN": "攻击DOWN抗性",
+      "en": "Atk Down Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "def-down-resistance",
+    "codecIndex": 89,
+    "name": {
+      "zh-CN": "防御DOWN抗性",
+      "en": "Def Down Resistance"
+    },
+    "maxLevel": 30
+  },
+  {
+    "id": "potion-hoarder",
+    "codecIndex": 90,
+    "name": {
+      "zh-CN": "药水携带数",
+      "en": "Potion Hoarder"
+    },
+    "maxLevel": 15
+  },
+  {
+    "id": "auto-potion",
+    "codecIndex": 91,
+    "name": {
+      "zh-CN": "自动药水",
+      "en": "Auto Potion"
+    },
+    "icon": "/assets/traits/special.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "guts",
+    "codecIndex": 92,
+    "name": {
+      "zh-CN": "豪胆",
+      "en": "Guts"
+    },
+    "maxLevel": 20
+  },
+  {
+    "id": "autorevive",
+    "codecIndex": 93,
+    "name": {
+      "zh-CN": "自动复活",
+      "en": "Autorevive"
+    },
+    "maxLevel": 20
+  },
+  {
+    "id": "steady-focus",
+    "codecIndex": 94,
+    "name": {
+      "zh-CN": "蓄力强化",
+      "en": "Steady Focus"
+    },
+    "icon": "/assets/traits/stout-heart.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "provoke",
+    "codecIndex": 95,
+    "name": {
+      "zh-CN": "挑衅",
+      "en": "Provoke"
+    },
+    "maxLevel": 20
+  },
+  {
+    "id": "low-profile",
+    "codecIndex": 96,
+    "name": {
+      "zh-CN": "匿踪",
+      "en": "Low Profile"
+    },
+    "maxLevel": 20
+  },
+  {
+    "id": "fast-learner",
+    "codecIndex": 97,
+    "name": {
+      "zh-CN": "获得经验值",
+      "en": "Fast Learner"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "rupie-tycoon",
+    "codecIndex": 98,
+    "name": {
+      "zh-CN": "获得金币",
+      "en": "Rupie Tycoon"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "path-to-mastery",
+    "codecIndex": 99,
+    "name": {
+      "zh-CN": "获得MSP",
+      "en": "Path To Mastery"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "crabby-resonance",
+    "codecIndex": 100,
+    "name": {
+      "zh-CN": "蟹钳的共鸣",
+      "en": "Crabby Resonance"
+    },
+    "maxLevel": 45
+  },
+  {
+    "id": "sumo-force",
+    "codecIndex": 101,
+    "name": {
+      "zh-CN": "相扑斗力",
+      "en": "Sumo Force"
+    },
+    "icon": "/assets/traits/crabby-resonance.webp",
+    "maxLevel": 5
+  },
+  {
+    "id": "stout-heart",
+    "codecIndex": 102,
+    "name": {
+      "zh-CN": "霸体",
+      "en": "Stout Heart"
+    },
+    "maxLevel": 15
+  },
+  {
+    "id": "alpha",
+    "codecIndex": 103,
+    "name": {
+      "zh-CN": "α秘纹",
+      "en": "Alpha"
+    },
+    "icon": "/assets/traits/special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "beta",
+    "codecIndex": 104,
+    "name": {
+      "zh-CN": "β秘纹",
+      "en": "Beta"
+    },
+    "icon": "/assets/traits/special.webp",
+    "maxLevel": 30
+  },
+  {
+    "id": "gamma",
+    "codecIndex": 105,
+    "name": {
+      "zh-CN": "γ秘纹",
+      "en": "Gamma"
+    },
+    "icon": "/assets/traits/special.webp",
+    "maxLevel": 30
+  }
+]

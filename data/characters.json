@@ -1,0 +1,3746 @@
+{
+  "captain": {
+    "codecIndex": 0,
+    "name": {
+      "zh-CN": "古兰 / 姬塔",
+      "en": "Gran / Djeeta"
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "无尽连斩",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "护甲破坏",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "密集方阵",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "全体治疗",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "箭雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "惨雾",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "暴怒",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "过载爆发",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "全体净化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "圣迹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "缓沼",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "复苏",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "圣纱",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "驱散",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "渡能",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "挺身而出",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 启程",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 终极长剑",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 金枪鱼之刃",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 杜朗达尔",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 曙光之剑",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 七星剑",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "英勇神速",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "英勇灵气",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "英勇之心",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：Class Lv强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：回复类能力强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：挺身而出特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "katalina": {
+    "codecIndex": 1,
+    "name": {
+      "zh-CN": "卡塔莉娜",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "附魔剑击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "寒冬冰雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "治疗",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "神圣凛风",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "苍天之剑",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "光墙屏障",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "非凡旅程",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "翡翠之盾",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 蓝冰剑",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 幻光",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 光辉骑士之剑·玛格纳",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 火焰细剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 缪格雷斯",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 布尔特根",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "守护者的决心",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "守护者的骄傲",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "守护者的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：阿瑞斯在场特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：阿瑞斯强袭特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：苍刃",
+          "en": null
+        }
+      }
+    ]
+  },
+  "rackam": {
+    "codecIndex": 2,
+    "name": {
+      "zh-CN": "拉卡姆",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "烈火射击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "枪林弹雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "双发子弹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "以逸待劳",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "送葬火舌",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "荒野硝烟",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "霰弹扫射",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "战地余波",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 刺刀长铳",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 黑云",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 提亚玛特之枪·玛格纳",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 簧轮斧刃铳",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 贝尼迪",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 弗雷克格",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "舵手的指引",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "舵手的坚持",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "舵手的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：靶心狙击强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：送葬火舌强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：战地余波特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "io": {
+    "codecIndex": 3,
+    "name": {
+      "zh-CN": "伊欧",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "治愈之风",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "寒冰",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "雷霆",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "魔洞",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "火焰",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "专注",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "花耀七闪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "魔力旋涡",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 小女巫权杖",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 天命杖",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 克罗萨斯杖·玛格纳",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 双翼双蛇权杖",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 伽万泰因",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 双蛇十字权杖",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "魔法师的心愿",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "魔法师的伶俐",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "魔法师的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：专注强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：魔法连锁",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：花耀七闪特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "eugen": {
+    "codecIndex": 4,
+    "name": {
+      "zh-CN": "欧根",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "暮光",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "爆裂射击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "战术拦截",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "穿甲弹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "剧毒榴弹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "麻痹弹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "治疗弹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "驱散射击",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 德莱塞步枪",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 战争号角",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 利维坦之枪",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 火绳枪",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] AK-4A",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 龙焰铳",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "老兵的智慧",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "老兵的天眼",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "老兵的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：瞄准模式强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：榴弹拳法",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：剧毒榴弹强化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "rosetta": {
+    "codecIndex": 5,
+    "name": {
+      "zh-CN": "萝赛塔",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "馥郁幻迹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "群花之主",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "魅惑芳丛",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "螺旋玫瑰",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "铁娘子",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "落花无情",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "玫瑰结界",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "繁花似锦",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 利己之刃",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 卡提纳",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 水晶玫瑰之刃",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 破刃剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 永恒之爱",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 巴哈姆特之刃·终曲",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "玫瑰早绽",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "玫瑰缤纷",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "玫瑰的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：玫瑰镇魂曲",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：强化&弱化效果特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：玫瑰强化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "charlotta": {
+    "codecIndex": 6,
+    "name": {
+      "zh-CN": "夏洛特",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "王之盾",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "耀眼猛攻",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "跳跃反击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "英勇战姿",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "神圣灌注",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "所向披靡",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "卢米埃之剑",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "神圣阶梯",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 光辉之剑",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 沙赫里瓦尔",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 乌修穆迦尔",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 阿隆戴特",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 光辉大剑",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 嘉拉汀",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "圣骑士的剑辉",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "圣骑士的威光",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "圣骑士的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：崇高之姿强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：正面对决",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：所向披靡特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "ghandagoza": {
+    "codecIndex": 7,
+    "name": {
+      "zh-CN": "冈达葛萨",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "罗汉天降击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "印可掌",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "激震铁山靠",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无明白天",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "威武雄姿",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "力足舞",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "古今无双",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "禅定",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 梵天添甲",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 射手拳套",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 猩红之指",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 绳索拳套",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 温罗鬼面金甲",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 方天画戟",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "古今无双的气概",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "古今无双的强者",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "古今无双的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：直冲重拳",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：威武雄姿特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：直冲绝技拳",
+          "en": null
+        }
+      }
+    ]
+  },
+  "ferry": {
+    "codecIndex": 8,
+    "name": {
+      "zh-CN": "菲莉",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "幻灵之鞭",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "蓝灵束缚",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "吉吉，拖住对手！",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幻灵祝福",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幽影幻步",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幻灵惩戒",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "强化之光",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幻灵守护",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 幽幻噬魂鞭",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 电光导线",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 火焰鞭",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 皮带",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 回忆",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 灵驭",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "幽幻之谊",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "幽幻之应",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "幽幻的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：宠物强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：孤高幽灵",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：辅助特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "narmaya": {
+    "codecIndex": 9,
+    "name": {
+      "zh-CN": "娜露梅",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "镜花水月",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "刹那",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "至人无己",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "纤月",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "泡沫梦幻",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "花风·薄红舞",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "花风·水缥舞",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无二无三",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 中卷野太刀",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 净心除魔刀",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 萤丸",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 虎彻",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 丙子椒林剑",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 天羽羽斩",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "斩姬梦幻",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "斩姬武艺",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "斩姬的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：起手式切换强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：一击必杀",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：无二无三特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "lancelot": {
+    "codecIndex": 10,
+    "name": {
+      "zh-CN": "兰斯洛特",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "剑刃冲击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "寒冰魔爪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "冰雪飞刃",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "苍蓝双剑",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "乱气流",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "南十字星",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "剑魂",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "蜃景",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 阿尔塔其拉",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 如雪",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 不渝星刃",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 冰雾剑佩尔索斯",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 冰霜骑士",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 大马士革匕首",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "白龙的誓约",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "白龙的荣耀",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "白龙的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：精准收招特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：躲避强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：攻击类能力高速化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "vane": {
+    "codecIndex": 11,
+    "name": {
+      "zh-CN": "巴恩",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "铜墙铁壁",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "裂空连斩",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "破军之力",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "巨力重击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "英勇打击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "战魂觉醒",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "活力灭击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "龙之荣耀",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 斧枪",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 绽花斧",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 乌贡瓦萨拉",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 白鹄",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 斗士之戟",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 姆乔尔尼尔",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "勇士的信念",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "勇士的毅力",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "勇士的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：挑衅+",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：我助人人",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：勇往直前",
+          "en": null
+        }
+      }
+    ]
+  },
+  "percival": {
+    "codecIndex": 12,
+    "name": {
+      "zh-CN": "珀西瓦尔",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "烈火突袭",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "烈焰脚步",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "未知之魂",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "撕裂",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "梦幻曲",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "力量",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "王之威势",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "赤焰旋涡",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 火焰波浪剑",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 安特卫普",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 咎瓦尤斯",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 罗恩格林",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 火焰领主",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 戈特弗里德",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "王者行进",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "王者一心",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "王者的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：蓄力攻击强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：红莲之刃",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：蓄力反击特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "siegfried": {
+    "codecIndex": 13,
+    "name": {
+      "zh-CN": "齐格飞",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "无畏之刃",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "昨日之影",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "计谋",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "蹑龙挪步",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "救世之力",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幻甲",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "湮灭斩",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "龙气外释",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 忠贞之刃",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 龙卷",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 赫伦汀",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 大地之剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 阿斯卡隆",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 巴尔蒙克",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "屠龙者的威猛",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "屠龙者的才智",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "屠龙者的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：精准攻击特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：攻击类能力强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：死境之剑",
+          "en": null
+        }
+      }
+    ]
+  },
+  "cagliostro": {
+    "codecIndex": 14,
+    "name": {
+      "zh-CN": "卡莉奥丝特罗",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "拟态人偶",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "盘蛇之阵",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "幻术光影",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "固魂",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "毁散",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "根源之术",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "起源之城",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "蛇行列车",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 秘术伟业",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 亚西维尔",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 神圣法典",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 观梦之书",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 圆环之书",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 佐西莫斯",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "极致谋略",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "极致真理",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "极致的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：弱化连击爆发",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：岩塌强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：回复&辅助强化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "yodarha": {
+    "codecIndex": 15,
+    "name": {
+      "zh-CN": "尤达拉哈",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "十起",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "空空漠漠",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "刀逡巡",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "千转",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "以牙还牙",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "百承",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "闪空",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "惊天动地",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 菊一文字",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 六道·普天幻魔",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 晚蝉",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 阿修罗",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 不动国行",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 太刀鱼",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "变幻自如的迅刃",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "变幻自如的妖剑士",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "变幻自如的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：三幕心得",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：疾攻",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：霞返",
+          "en": null
+        }
+      }
+    ]
+  },
+  "zeta": {
+    "codecIndex": 16,
+    "name": {
+      "zh-CN": "塞达",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "无尽奇观",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "愤怒之雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "阿尔贝斯之枪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "符文狂潮",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "长枪回旋",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "复仇之火",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "千炎",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "威光领域",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 阿尔贝斯之枪",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 黄龙枪",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 格劳西萨",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 素日暗斑枪",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 布里欧纳克",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 迦耶伯格",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "真红烈焰",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "真红翔舞",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "真红的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：跃空连击强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：攻击类能力强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：反击特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "vaseraga": {
+    "codecIndex": 17,
+    "name": {
+      "zh-CN": "巴萨拉卡",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "恐怖军势",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "暴虐暗影",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "巨镰古洛诺斯",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无畏巨躯",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "遗忘传说",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "灭顶一击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "暗蚀",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "地狱之怒",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 巨镰古洛诺斯",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 宙域之镰",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 噬魂者",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 阿尔萨之爱",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 锌晶之镰",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 埃列什基伽勒",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "冥暗刚刃",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "冥暗自若",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "冥暗的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：普攻连击特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：蓄力攻击特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：蓄力反击特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "beatrix": {
+    "codecIndex": 18,
+    "name": {
+      "zh-CN": "贝阿朵丽丝",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "游影自如",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "逐星",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "恩布拉斯克之剑",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "永恒征程",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "烈焰之心",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "雷鸟",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "破缚残影",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "新星跃升",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 恩布拉斯克之剑",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 里德尔",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 鬼切安纲",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 克罗萨斯大剑·怒火",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 格拉墨",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 薛定谔",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "群青的剑光",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "群青的逆境",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "群青的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：啖因果特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：三相时钟强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：能力连锁",
+          "en": null
+        }
+      }
+    ]
+  },
+  "eustace": {
+    "codecIndex": 19,
+    "name": {
+      "zh-CN": "尤斯提斯",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "缓刑",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "不朽之誓",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "戏火",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "怒号连击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "雷光迅步",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "不屈之志",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "弗拉梅克之雷",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "撼地天雷",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 弗拉梅克之雷",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 终极火铳",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 尼布甲尼撒",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 塞斐拉翠铳",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 斯特拉图姆火铳",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 赫拉斯瓦尔格",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "雷狼的弹匣",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "雷狼的慧眼",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "雷狼的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：近距离射击特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：奔雷",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：完美射击",
+          "en": null
+        }
+      }
+    ]
+  },
+  "seofon": {
+    "codecIndex": 20,
+    "name": {
+      "zh-CN": "希耶提",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "横扫剑弧",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无尽剑阵",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "破灭剑陨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "聚灵剑气",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "缚魂剑罡",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "碎星剑斩",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "狂风剑气",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "七星剑闪",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 七之宝剑",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 风之宝剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 天枢·极星剑",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 十天光辉之佩剑",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "剑圣的炼气",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "剑圣的闪刃",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "剑圣的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：剑神召唤强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：剑雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：剑神切换特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "tweyen": {
+    "codecIndex": 21,
+    "name": {
+      "zh-CN": "索恩",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "信使神光",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "堕落箭雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "致命一击",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "散矢疾影",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "圆弧散射",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "致命箭雨",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "弓魄无双",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "二王之诤",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 孤傲之弓",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 赫拉克勒斯",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 真灭·霸王弓",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 十天光辉之弯弓",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "魔眼的万箭",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "魔眼的凛翔",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "魔眼的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：多重瞄准射击特化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：致命一击强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：二王之诤特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "sandalphon": {
+    "codecIndex": 22,
+    "name": {
+      "zh-CN": "圣德芬",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "天司之息",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无路可逃",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "天光轨迹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "一人之力",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "极火虹光",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "独守天穹",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "凛冬暗夜",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "定法囚牢",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 传承之剑",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 米迦勒之剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 世界终焉",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 以弗所",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "天司长的灵威",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "天司长的风雅",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "天司长的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：誓约十二羽翼",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：白辉祝福",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：审判之钟",
+          "en": null
+        }
+      }
+    ]
+  },
+  "fraux": {
+    "codecIndex": 23,
+    "name": {
+      "zh-CN": "芙劳",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "降咒",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "猩红梦魇",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "暴虐之拳",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "转瞬之机",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "夺命领域",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "破面踢",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "夺目光辉",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "力量源泉",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 魔鬼圆舞曲",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 山鲁佐德",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 璀璨舞鞋",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 交途鬼契",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "转世的恩宠",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "转世的跃动",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "转世的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：正逆位强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：煌煌之力",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：恶魔的低语",
+          "en": null
+        }
+      }
+    ]
+  },
+  "fediel": {
+    "codecIndex": 24,
+    "name": {
+      "zh-CN": "菲迪埃尔",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "碎魂",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "逆爪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "灾兆",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "黑之祝福",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "本源恐惧",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "咒葬",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "瘴域",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "逆核",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 春藤发饰",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 遮阳墨镜",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 青瘴花饰",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 幽冥华冠",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "黑龙的咒印",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "黑龙的折跃",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "黑龙的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：连击收招强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：“黑”之侵蚀",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：理外暗灾",
+          "en": null
+        }
+      }
+    ]
+  },
+  "id": {
+    "codecIndex": 25,
+    "name": {
+      "zh-CN": "伊德",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "圣迹再临",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "无缚之斩",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "赎罪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "末日形态",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "天谴",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "神愿之力",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "永无止境",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "乐园之噬",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 诸神黄昏",
+          "en": null
+        }
+      },
+      "executioner": {
+        "name": {
+          "zh-CN": "[弱点伤害特化] 埃克撒克逊",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 奢华炸虾剑",
+          "en": null
+        }
+      },
+      "stunner": {
+        "name": {
+          "zh-CN": "[昏厥特化] 阿维亚士兵剑",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 须佐",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 巴哈姆特之剑",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "异能增长",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "异能战意",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "异能之心",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：神威一体强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：龙人化强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：神愿之力特化",
+          "en": null
+        }
+      }
+    ]
+  },
+  "gallanza": {
+    "codecIndex": 26,
+    "name": {
+      "zh-CN": "伽兰查",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "横枪立马",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "华枪天降",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "穿山一刺",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "武刹枪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "风卷残云",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "锋芒一线",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "摧山坼地",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "铁衣玉碎",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 棍斗罗",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 建筑木方",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 伐龙爪戟",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 无双矛铠",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "狼王的激昂",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "狼王的大转轮",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "狼王的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：铁衣玉碎强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：回旋枪强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：武夫",
+          "en": null
+        }
+      }
+    ]
+  },
+  "maglielle": {
+    "codecIndex": 27,
+    "name": {
+      "zh-CN": "玛琪拉菲菈",
+      "en": null
+    },
+    "skills": [
+      {
+        "name": {
+          "zh-CN": "迅雷之锤",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "必杀魔铳",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "奇迹权杖",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "神威宝枪",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "坚毅戎歌",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "暗夜离曲",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "曲音萦绕",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "英勇颂歌",
+          "en": null
+        }
+      }
+    ],
+    "weapons": {
+      "defender": {
+        "name": {
+          "zh-CN": "[防御特化] 尽奏",
+          "en": null
+        }
+      },
+      "stinger": {
+        "name": {
+          "zh-CN": "[暴击特化] 神尽异度·慈悲无量心",
+          "en": null
+        }
+      },
+      "ascension": {
+        "name": {
+          "zh-CN": "[觉醒] 断钢剑",
+          "en": null
+        }
+      },
+      "terminus": {
+        "name": {
+          "zh-CN": "[究极] 寻梦",
+          "en": null
+        }
+      }
+    },
+    "exclusiveTraits": {
+      "awakeningA": {
+        "name": {
+          "zh-CN": "刃姬的小夜曲",
+          "en": null
+        }
+      },
+      "awakeningB": {
+        "name": {
+          "zh-CN": "刃姬的轮舞曲",
+          "en": null
+        }
+      },
+      "warpath": {
+        "name": {
+          "zh-CN": "刃姬的战气",
+          "en": null
+        }
+      }
+    },
+    "masteries": [
+      {
+        "name": {
+          "zh-CN": "觉醒：魔剑之舞强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "真谛：超凡系列强化",
+          "en": null
+        }
+      },
+      {
+        "name": {
+          "zh-CN": "秘义：刃重结界",
+          "en": null
+        }
+      }
+    ]
+  }
+}

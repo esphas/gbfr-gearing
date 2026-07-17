@@ -1,0 +1,86 @@
+{
+  "vitality": {
+    "codecIndex": 3,
+    "name": {
+      "zh-CN": "生机之祝福",
+      "en": null
+    },
+    "traits": [
+      {
+        "id": "critical-hit-rate",
+        "level": 20
+      },
+      {
+        "id": null,
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      }
+    ]
+  },
+  "sequestration": {
+    "codecIndex": 2,
+    "name": {
+      "zh-CN": "隔绝之祝福",
+      "en": null
+    },
+    "traits": [
+      {
+        "id": "weak-point-dmg",
+        "level": 20
+      },
+      {
+        "id": null,
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      }
+    ]
+  },
+  "fortification": {
+    "codecIndex": 1,
+    "name": {
+      "zh-CN": "镇守之祝福",
+      "en": null
+    },
+    "traits": [
+      {
+        "id": "hp",
+        "level": 20
+      },
+      {
+        "id": null,
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      }
+    ]
+  },
+  "dread": {
+    "codecIndex": 0,
+    "name": {
+      "zh-CN": "畏惧之祝福",
+      "en": null
+    },
+    "traits": [
+      {
+        "id": "stun-power",
+        "level": 20
+      },
+      {
+        "id": null,
+        "level": 15
+      },
+      {
+        "id": null,
+        "level": 10
+      }
+    ]
+  }
+}
