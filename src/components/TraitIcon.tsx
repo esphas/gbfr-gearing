@@ -20,7 +20,7 @@ export function TraitIcon({ src = null, alt = "", size = 18 }: Props) {
           src={src}
           alt={alt}
           size={size}
-          className="!rounded-sm trait-icon-img"
+          style={{ borderRadius: 2 }}
         />
       ) : null}
     </span>

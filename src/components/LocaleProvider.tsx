@@ -4,14 +4,12 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from "react";
 import {
   DEFAULT_LOCALE,
   persistLocale,
-  readStoredLocale,
   type Locale,
 } from "@/lib/i18n/locale";
 import { t, type UiMessages } from "@/lib/i18n/messages";
@@ -25,13 +23,10 @@ type LocaleContextValue = {
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
-
-  useEffect(() => {
-    const stored = readStoredLocale();
-    setLocaleState(stored);
-    document.documentElement.lang = stored;
-  }, []);
+  const [locale, setLocaleState] = useState<Locale>(() => {
+    if (typeof document === "undefined") return DEFAULT_LOCALE;
+    return document.documentElement.lang === "en" ? "en" : DEFAULT_LOCALE;
+  });
 
   const setLocale = useCallback((next: Locale) => {
     setLocaleState(next);

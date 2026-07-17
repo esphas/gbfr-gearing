@@ -3,6 +3,21 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  Col,
+  Flex,
+  Input,
+  Layout,
+  Row,
+  Space,
+  Spin,
+  Table,
+  Typography,
+} from "antd";
+import {
   catalog,
   allCharacters,
   allWrightstones,
@@ -65,6 +80,8 @@ import { TraitTotalsPanel } from "@/components/TraitTotalsPanel";
 import { computeTraitLevelRows } from "@/lib/schema/trait-totals";
 import type { UiMessages } from "@/lib/i18n/messages";
 
+const { Header, Content } = Layout;
+
 const WEAPON_TRAIT_ROWS = 5;
 const WRIGHTSTONE_TRAIT_ROWS = 3;
 
@@ -81,6 +98,33 @@ function tierLabel(tier: MasteryTier, m: UiMessages) {
     case "ex":
       return m.tierEx;
   }
+}
+
+function FixedTrait({
+  id,
+  locale,
+  m,
+  fixedLabel,
+}: {
+  id: string | null;
+  locale: Parameters<typeof displayName>[2];
+  m: UiMessages;
+  fixedLabel: string;
+}) {
+  const trait = id ? getTrait(id) : undefined;
+  return (
+    <Flex align="center" gap={6}>
+      <TraitIcon src={id ? traitIconSrc(id) : null} alt="" />
+      <Typography.Text
+        ellipsis
+        title={fixedLabel}
+        type={id ? undefined : "secondary"}
+        style={{ fontSize: 12 }}
+      >
+        {id ? displayName(trait, id, locale, m) : "—"}
+      </Typography.Text>
+    </Flex>
+  );
 }
 
 export function BuildEditor() {
@@ -139,6 +183,7 @@ export function BuildEditor() {
   }, []);
 
   useEffect(() => {
+    /* eslint-disable react-hooks/set-state-in-effect */
     if (alignedShareKeyRef.current === shareKey) {
       return;
     }
@@ -147,7 +192,10 @@ export function BuildEditor() {
     const result = parseShareSearchParams(searchParams);
     const draft = readBuildDraft();
 
-    const finish = (next: BuildState, meta: { fromShare: string | null; dirty: boolean }) => {
+    const finish = (
+      next: BuildState,
+      meta: { fromShare: string | null; dirty: boolean },
+    ) => {
       setDraftMeta(meta);
       const normalized = syncNormalize(next);
       setBuild(normalized);
@@ -208,6 +256,7 @@ export function BuildEditor() {
       fromShare: null,
       dirty: false,
     });
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [shareKey, defaultCharacterId, syncNormalize, searchParams, m, setDraftMeta]);
 
   const updateBuild = useCallback(
@@ -429,38 +478,208 @@ export function BuildEditor() {
 
   if (!hydrated) {
     return (
-      <div className="build-board mx-auto w-full max-w-[1720px] px-2 py-3 md:px-3">
-        <div className="mb-2 flex items-center gap-2 text-xs">
-          <span className="font-[family-name:var(--font-display)] text-sm font-semibold tracking-wide text-[var(--accent)]">
-            {m.appTitle}
-          </span>
-          <div className="ml-auto flex items-center gap-1">
-            <LocaleToggle />
-            <ThemeToggle />
-          </div>
+      <Layout style={{ minHeight: "100vh", background: "transparent" }}>
+        <Header className="build-header">
+        <div className="build-header-brand">
+          <Typography.Text strong>{m.appTitle}</Typography.Text>
         </div>
-        <div className="px-1 py-6 text-sm text-[var(--muted)]">{m.loading}</div>
-      </div>
+        <Space className="build-header-toggles">
+          <LocaleToggle />
+          <ThemeToggle />
+        </Space>
+      </Header>
+      <Content style={{ padding: 24, textAlign: "center" }}>
+        <Spin tip={m.loading} />
+      </Content>
+      </Layout>
     );
   }
 
-  let weaponFlexIdx = -1;
-  let wrightFlexIdx = -1;
+  const weaponRows = Array.from({ length: WEAPON_TRAIT_ROWS }, (_, i) => {
+    const slot = selectedWeapon?.traits[i];
+    if (!slot || !selectedWeapon) {
+      return {
+        key: `wtrait-pad-${i}`,
+        index: i + 1,
+        trait: (
+          <FixedTrait id={null} locale={locale} m={m} fixedLabel={m.fixedTrait} />
+        ),
+        level: selectedWeapon ? "" : "\u00a0",
+      };
+    }
+    const isFlex = slot.id === null;
+    const flexIdx = isFlex
+      ? selectedWeapon.traits
+          .slice(0, i)
+          .filter((s) => s.id === null).length
+      : -1;
+    const selectedId = isFlex
+      ? (build.weaponTraitIds[flexIdx] ?? null)
+      : slot.id;
+    const trait = selectedId ? getTrait(selectedId) : undefined;
+    const poolOptions = isFlex
+      ? flexibleWeaponTraitOptions(
+          selectedWeapon,
+          build.weaponTraitIds,
+          flexIdx,
+        ).map((t) => ({
+          value: t.id,
+          label: labelForName(t.name, locale),
+          icon: traitIconSrc(t.id),
+        }))
+      : [];
+    return {
+      key: `wtrait-${i}`,
+      index: i + 1,
+      trait: isFlex ? (
+        <SearchableSelect
+          withIcon
+          value={selectedId}
+          options={
+            selectedId && !poolOptions.some((o) => o.value === selectedId)
+              ? [
+                  {
+                    value: selectedId,
+                    label: displayName(trait, selectedId, locale, m),
+                    icon: traitIconSrc(selectedId),
+                  },
+                  ...poolOptions,
+                ]
+              : poolOptions
+          }
+          onChange={(nextId) =>
+            updateBuild((prev) => {
+              const weaponTraitIds = [...prev.weaponTraitIds];
+              weaponTraitIds[flexIdx] = nextId;
+              return { ...prev, weaponTraitIds };
+            })
+          }
+        />
+      ) : (
+        <FixedTrait
+          id={selectedId}
+          locale={locale}
+          m={m}
+          fixedLabel={m.fixedTrait}
+        />
+      ),
+      level: `Slv ${slot.level}`,
+    };
+  });
+
+  const wrightRows = Array.from({ length: WRIGHTSTONE_TRAIT_ROWS }, (_, i) => {
+    const slot = selectedWrightstone?.traits[i];
+    if (!slot || !selectedWrightstone) {
+      return {
+        key: `wstrait-pad-${i}`,
+        index: i + 1,
+        trait: (
+          <FixedTrait id={null} locale={locale} m={m} fixedLabel={m.fixedTrait} />
+        ),
+        level: selectedWrightstone ? "" : "\u00a0",
+      };
+    }
+    const isFlex = slot.id === null;
+    const flexIdx = isFlex
+      ? selectedWrightstone.traits
+          .slice(0, i)
+          .filter((s) => s.id === null).length
+      : -1;
+    const selectedId = isFlex
+      ? (build.wrightstoneTraitIds[flexIdx] ?? null)
+      : slot.id;
+    const trait = selectedId ? getTrait(selectedId) : undefined;
+    const poolOptions = isFlex
+      ? flexibleWrightstoneTraitOptions(
+          selectedWrightstone,
+          build.characterId,
+          build.wrightstoneTraitIds,
+          flexIdx,
+        ).map((t) => ({
+          value: t.id,
+          label: labelForName(t.name, locale),
+          icon: traitIconSrc(t.id),
+        }))
+      : [];
+    return {
+      key: `wstrait-${i}`,
+      index: i + 1,
+      trait: isFlex ? (
+        <SearchableSelect
+          withIcon
+          value={selectedId}
+          options={
+            selectedId && !poolOptions.some((o) => o.value === selectedId)
+              ? [
+                  {
+                    value: selectedId,
+                    label: displayName(trait, selectedId, locale, m),
+                    icon: traitIconSrc(selectedId),
+                  },
+                  ...poolOptions,
+                ]
+              : poolOptions
+          }
+          onChange={(nextId) =>
+            updateBuild((prev) => {
+              const wrightstoneTraitIds = [...prev.wrightstoneTraitIds];
+              wrightstoneTraitIds[flexIdx] = nextId;
+              return { ...prev, wrightstoneTraitIds };
+            })
+          }
+        />
+      ) : (
+        <FixedTrait
+          id={selectedId}
+          locale={locale}
+          m={m}
+          fixedLabel={m.fixedTrait}
+        />
+      ),
+      level: `Slv ${slot.level}`,
+    };
+  });
+
+  const slotColumns = [
+    {
+      title: "#",
+      dataIndex: "index",
+      width: 36,
+      align: "center" as const,
+      render: (v: number) => (
+        <Typography.Text type="secondary" style={{ fontSize: 11 }}>
+          {v}
+        </Typography.Text>
+      ),
+    },
+    { title: "", dataIndex: "trait", render: (v: React.ReactNode) => v },
+    {
+      title: "",
+      dataIndex: "level",
+      width: 56,
+      align: "right" as const,
+      render: (v: string) => (
+        <Typography.Text type="secondary" style={{ fontSize: 12 }}>
+          {v}
+        </Typography.Text>
+      ),
+    },
+  ];
 
   return (
-    <div className="build-board mx-auto w-full max-w-[1720px] px-2 py-3 md:px-3">
-      <div className="build-toolbar mb-2 text-xs">
-        <span className="build-toolbar-title">
-          {m.appTitle}
+    <Layout style={{ minHeight: "100vh", background: "transparent" }}>
+      <Header className="build-header">
+        <div className="build-header-brand">
+          <Typography.Text strong>{m.appTitle}</Typography.Text>
           {dirty ? (
-            <span
-              className="dirty-dot"
+            <Badge
+              status="warning"
               title={m.dirtyHint}
               aria-label={m.dirtyHint}
             />
           ) : null}
-        </span>
-        <div className="build-toolbar-actions">
+        </div>
+        <Space className="build-header-actions" wrap>
           <ShareLinkMenu
             shareUrl={shareUrl}
             open={shareMenuOpen}
@@ -470,9 +689,9 @@ export function BuildEditor() {
             onCopy={copyShareLink}
           />
           <SaveImageMenu build={build} shareUrl={shareUrl} />
-        </div>
-        <input
-          className="build-toolbar-note"
+        </Space>
+        <Input
+          className="build-header-note"
           maxLength={catalog.meta.noteMaxLength}
           value={build.note ?? ""}
           onChange={(e) =>
@@ -483,492 +702,413 @@ export function BuildEditor() {
           }
           placeholder={m.notePlaceholder}
         />
-        {banner ? (
-          <span className="build-toolbar-banner text-warn">{banner}</span>
-        ) : null}
-        <div className="build-toolbar-toggles">
+        <Space className="build-header-toggles">
           <LocaleToggle />
           <ThemeToggle />
-        </div>
-      </div>
+        </Space>
+        {banner ? (
+          <Alert
+            className="build-header-banner"
+            type="warning"
+            showIcon
+            message={banner}
+          />
+        ) : null}
+      </Header>
 
-      <div className="build-grid gap-2">
-        <TraitTotalsPanel
-          rows={traitLevelRows}
-          characterId={build.characterId}
-        />
+      <Content style={{ padding: 12, maxWidth: 1720, margin: "0 auto", width: "100%" }}>
+        <Row gutter={[8, 8]}>
+          <Col xs={24} lg={6} xl={5}>
+            <TraitTotalsPanel
+              rows={traitLevelRows}
+              characterId={build.characterId}
+            />
+          </Col>
 
-        <div className="build-main">
-          <div className="build-char-col flex min-w-0 flex-col gap-2">
-            <div className="board-block flex items-center gap-2 px-2 py-1.5">
-              <AssetIcon
-                src={resolveIcon("characters", build.characterId, character?.icon)}
-                alt={displayName(character, build.characterId, locale, m)}
-                size={40}
-              />
-              <div className="min-w-0 flex-1">
-                <SelectField
-                  label={m.character}
-                  value={build.characterId}
-                  allowEmpty={false}
-                  options={allCharacters().map((c) => ({
-                    value: c.id,
-                    label: resolveLocalizedName(c.name, locale) ?? c.name["zh-CN"],
-                  }))}
-                  onChange={(id) => id && switchCharacter(id)}
-                />
-              </div>
-              <button
-                type="button"
-                className="btn-secondary shrink-0 self-end !px-2 !py-1.5 !text-xs"
-                onClick={resetBuild}
+          <Col xs={24} lg={18} xl={19}>
+            <Row gutter={[8, 8]} align="stretch">
+              <Col
+                xs={24}
+                md={10}
+                xl={9}
+                className="build-col build-col-sigils"
+                style={{ display: "flex" }}
               >
-                {m.reset}
-              </button>
-            </div>
+                <Flex vertical gap={8} style={{ width: "100%" }}>
+                  <Card size="small" styles={{ body: { padding: 8 } }}>
+                    <Flex align="center" gap={8}>
+                      <AssetIcon
+                        src={resolveIcon(
+                          "characters",
+                          build.characterId,
+                          character?.icon,
+                        )}
+                        alt={displayName(
+                          character,
+                          build.characterId,
+                          locale,
+                          m,
+                        )}
+                        size={40}
+                      />
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <SelectField
+                          label={m.character}
+                          value={build.characterId}
+                          allowEmpty={false}
+                          options={allCharacters().map((c) => ({
+                            value: c.id,
+                            label:
+                              resolveLocalizedName(c.name, locale) ??
+                              c.name["zh-CN"],
+                          }))}
+                          onChange={(id) => id && switchCharacter(id)}
+                        />
+                      </div>
+                      <Button onClick={resetBuild}>{m.reset}</Button>
+                    </Flex>
+                  </Card>
 
-            <div className="board-block overflow-visible">
-              <div className="board-head">{m.sigils}</div>
-              <table className="board-table board-table-sigils">
-                <tbody>
-                  {build.sigilSlots.map((slot, index) => {
-                    const t0 = slot[0];
-                    const t1 = slot[1];
-                    const t0Invalid = Boolean(
-                      t0 && !sigilTraitOptions.some((o) => o.value === t0),
-                    );
-                    const t1Invalid = Boolean(
-                      t1 && !sigilTraitOptions.some((o) => o.value === t1),
-                    );
-                    return (
-                      <tr key={`sigil-${index}`}>
-                        <td className="sigil-index text-center text-[10px] text-[var(--muted)]">
-                          {index + 1}
-                        </td>
-                        <td>
-                          <SearchableSelect
-                            compact
-                            withIcon
-                            invalid={t0Invalid}
-                            value={t0}
-                            options={
-                              t0Invalid
-                                ? [
-                                    {
-                                      value: t0!,
-                                      label: resolveTraitName(
-                                        t0,
-                                        locale,
-                                        m,
-                                        build.characterId,
-                                      ),
-                                      icon: traitIconSrc(t0, build.characterId),
-                                    },
-                                    ...sigilTraitOptions,
-                                  ]
-                                : sigilTraitOptions
-                            }
-                            onChange={(next) => setSigilTrait(index, 0, next)}
-                          />
-                        </td>
-                        <td>
-                          <SearchableSelect
-                            compact
-                            withIcon
-                            invalid={t1Invalid}
-                            value={t1}
-                            options={
-                              t1Invalid
-                                ? [
-                                    {
-                                      value: t1!,
-                                      label: resolveTraitName(
-                                        t1,
-                                        locale,
-                                        m,
-                                        build.characterId,
-                                      ),
-                                      icon: traitIconSrc(t1, build.characterId),
-                                    },
-                                    ...sigilTraitOptions,
-                                  ]
-                                : sigilTraitOptions
-                            }
-                            onChange={(next) => setSigilTrait(index, 1, next)}
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-
-
-          </div>
-
-          <div className="build-mastery-col flex min-w-0 flex-col gap-2">
-            <div className="board-block min-w-0 overflow-auto">
-              {masteryBudget ? (
-                <div className="flex flex-wrap items-center gap-2 border-b border-[var(--border)] px-2 py-1 text-[10px] text-[var(--muted)]">
-                  {TIER_ORDER.map((tier) => (
-                    <span key={tier}>
-                      {tierLabel(tier, m)} {masteryBudget[tier].used}/
-                      {masteryBudget[tier].max}
-                    </span>
-                  ))}
-                  <button
-                    type="button"
-                    className="btn-secondary ml-auto !px-1.5 !py-0.5 !text-[10px]"
-                    disabled={build.masteryNodes.length === 0}
-                    onClick={() =>
-                      updateBuild((prev) => ({ ...prev, masteryNodes: [] }))
-                    }
+                  <Card
+                    size="small"
+                    title={m.sigils}
+                    styles={{ body: { padding: 0 } }}
                   >
-                    {m.clearMastery}
-                  </button>
-                </div>
-              ) : null}
-              {masteryTree ? (
-                <div className="mastery-grid">
-                  {masteryTree.map((dir, dirIdx) => {
-                    const bonus = directionBonuses.find(
-                      (b) => b.directionIndex === dirIdx,
-                    );
-                    return (
-                      <div key={dirIdx} className="mastery-dir">
-                        <div className="board-head text-center text-[11px]">
-                          {resolveLocalizedName(dir.name, locale) ?? dir.name["zh-CN"]}
-                          <div className="mt-0.5 text-[9px] font-normal text-[var(--muted)]">
-                            {[
-                              bonus?.tier1 ? m.tier1Bonus : null,
-                              bonus?.tier2 ? m.tier2Bonus : null,
-                              bonus?.tier3 ? m.tier3Bonus : null,
-                            ]
-                              .filter(Boolean)
-                              .join(" ") || "—"}
-                          </div>
-                        </div>
-                        {TIER_ORDER.map((tier) => {
-                          const nodeCount =
-                            catalog.meta.masteryDirectionCounts[tier];
-                          return (
-                            <div key={tier} className="mastery-tier">
-                              <div className="px-1 py-0.5 text-center text-[9px] text-[var(--muted)]">
-                                {tierLabel(tier, m)}
-                              </div>
-                              <div className="mastery-nodes">
-                                {Array.from(
-                                  { length: nodeCount },
-                                  (_, nodeIdx) => {
-                                    const ref: MasteryNodeRef = {
-                                      d: dirIdx,
-                                      tier,
-                                      i: nodeIdx,
-                                    };
-                                    const on = build.masteryNodes.some(
-                                      (n) =>
-                                        masteryNodeKey(n) ===
-                                        masteryNodeKey(ref),
-                                    );
-                                    const label = String(nodeIdx + 1);
-                                    return (
-                                      <button
-                                        key={`${dirIdx}-${tier}-${nodeIdx}`}
-                                        type="button"
-                                        className={`mastery-node ${on ? "on" : ""}`}
-                                        onClick={() => toggleMasteryNode(ref)}
-                                      >
-                                        {label}
-                                      </button>
-                                    );
-                                  },
-                                )}
+                    <Table
+                      size="small"
+                      pagination={false}
+                      showHeader={false}
+                      rowKey="key"
+                      dataSource={build.sigilSlots.map((slot, index) => {
+                        const t0 = slot[0];
+                        const t1 = slot[1];
+                        const t0Invalid = Boolean(
+                          t0 && !sigilTraitOptions.some((o) => o.value === t0),
+                        );
+                        const t1Invalid = Boolean(
+                          t1 && !sigilTraitOptions.some((o) => o.value === t1),
+                        );
+                        return {
+                          key: `sigil-${index}`,
+                          index: index + 1,
+                          t0: (
+                            <SearchableSelect
+                              withIcon
+                              invalid={t0Invalid}
+                              value={t0}
+                              options={
+                                t0Invalid
+                                  ? [
+                                      {
+                                        value: t0!,
+                                        label: resolveTraitName(
+                                          t0,
+                                          locale,
+                                          m,
+                                          build.characterId,
+                                        ),
+                                        icon: traitIconSrc(
+                                          t0,
+                                          build.characterId,
+                                        ),
+                                      },
+                                      ...sigilTraitOptions,
+                                    ]
+                                  : sigilTraitOptions
+                              }
+                              onChange={(next) =>
+                                setSigilTrait(index, 0, next)
+                              }
+                            />
+                          ),
+                          t1: (
+                            <SearchableSelect
+                              withIcon
+                              invalid={t1Invalid}
+                              value={t1}
+                              options={
+                                t1Invalid
+                                  ? [
+                                      {
+                                        value: t1!,
+                                        label: resolveTraitName(
+                                          t1,
+                                          locale,
+                                          m,
+                                          build.characterId,
+                                        ),
+                                        icon: traitIconSrc(
+                                          t1,
+                                          build.characterId,
+                                        ),
+                                      },
+                                      ...sigilTraitOptions,
+                                    ]
+                                  : sigilTraitOptions
+                              }
+                              onChange={(next) =>
+                                setSigilTrait(index, 1, next)
+                              }
+                            />
+                          ),
+                        };
+                      })}
+                      columns={[
+                        {
+                          dataIndex: "index",
+                          width: 40,
+                          align: "center",
+                          render: (v: number) => (
+                            <Typography.Text
+                              type="secondary"
+                              style={{
+                                fontSize: 11,
+                                whiteSpace: "nowrap",
+                                fontVariantNumeric: "tabular-nums",
+                              }}
+                            >
+                              {v}
+                            </Typography.Text>
+                          ),
+                        },
+                        { dataIndex: "t0", render: (v: React.ReactNode) => v },
+                        { dataIndex: "t1", render: (v: React.ReactNode) => v },
+                      ]}
+                    />
+                  </Card>
+                </Flex>
+              </Col>
+
+              <Col
+                xs={24}
+                md={14}
+                xl={15}
+                className="build-col build-col-mastery"
+                style={{ display: "flex", flexDirection: "column" }}
+              >
+                <Card
+                  size="small"
+                  className="mastery-card"
+                  style={{
+                    flex: 1,
+                    width: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                  styles={{
+                    body: {
+                      padding: 8,
+                      flex: 1,
+                      display: "flex",
+                      flexDirection: "column",
+                      minHeight: 0,
+                    },
+                  }}
+                  title={
+                    masteryBudget ? (
+                      <Flex
+                        align="center"
+                        gap={8}
+                        wrap
+                        style={{ width: "100%" }}
+                      >
+                        {TIER_ORDER.map((tier) => (
+                          <Typography.Text
+                            key={tier}
+                            type="secondary"
+                            style={{ fontSize: 11 }}
+                          >
+                            {tierLabel(tier, m)} {masteryBudget[tier].used}/
+                            {masteryBudget[tier].max}
+                          </Typography.Text>
+                        ))}
+                        <Button
+                          size="small"
+                          style={{ marginLeft: "auto" }}
+                          disabled={build.masteryNodes.length === 0}
+                          onClick={() =>
+                            updateBuild((prev) => ({
+                              ...prev,
+                              masteryNodes: [],
+                            }))
+                          }
+                        >
+                          {m.clearMastery}
+                        </Button>
+                      </Flex>
+                    ) : (
+                      m.mastery
+                    )
+                  }
+                >
+                  {masteryTree ? (
+                    <div className="mastery-grid">
+                      {masteryTree.map((dir, dirIdx) => {
+                        const bonus = directionBonuses.find(
+                          (b) => b.directionIndex === dirIdx,
+                        );
+                        return (
+                          <div key={dirIdx} className="mastery-dir">
+                            <div className="mastery-dir-head">
+                              {resolveLocalizedName(dir.name, locale) ??
+                                dir.name["zh-CN"]}
+                              <div className="mastery-dir-bonus">
+                                {[
+                                  bonus?.tier1 ? m.tier1Bonus : null,
+                                  bonus?.tier2 ? m.tier2Bonus : null,
+                                  bonus?.tier3 ? m.tier3Bonus : null,
+                                ]
+                                  .filter(Boolean)
+                                  .join(" ") || "—"}
                               </div>
                             </div>
-                          );
-                        })}
-                      </div>
-                    );
-                  })}
-                </div>
-              ) : (
-                <p className="p-3 text-xs text-[var(--muted)]">{m.noMasteryData}</p>
-              )}
-            </div>
-
-
-          </div>
-
-          <div className="build-bottom-row">
-<div className="board-block overflow-visible">
-                <div className="board-head flex items-center gap-2">
-                  <span>{m.weapon}</span>
-                  <div className="min-w-0 flex-1">
-                    <SearchableSelect
-                      compact
-                      value={build.weaponType}
-                      options={weaponOptions}
-                      onChange={switchWeapon}
-                      placeholder={m.selectWeapon}
-                    />
-                  </div>
-                </div>
-                <table className="board-table board-table-slots">
-                  <tbody>
-                    {Array.from({ length: WEAPON_TRAIT_ROWS }, (_, i) => {
-                      const slot = selectedWeapon?.traits[i];
-                      if (!slot || !selectedWeapon) {
-                        return (
-                          <tr key={`wtrait-pad-${i}`}>
-                            <td className="w-6 text-center text-[10px] text-[var(--muted)]">
-                              {i + 1}
-                            </td>
-                            <td>
-                              <div className="trait-pick" aria-hidden>
-                                <TraitIcon src={null} />
-                                <div className="trait-pick-control">
-                                  <div className="trait-slot trait-slot-muted">
-                                    {selectedWeapon ? "\u00a0" : "—"}
+                            {TIER_ORDER.map((tier) => {
+                              const nodeCount =
+                                catalog.meta.masteryDirectionCounts[tier];
+                              const rowCount = Math.ceil(nodeCount / 2);
+                              return (
+                                <div key={tier} className="mastery-tier">
+                                  <div className="mastery-tier-label">
+                                    {tierLabel(tier, m)}
+                                  </div>
+                                  <div
+                                    className="mastery-nodes"
+                                    style={{ flex: `${rowCount} 1 0` }}
+                                  >
+                                    {Array.from(
+                                      { length: nodeCount },
+                                      (_, nodeIdx) => {
+                                        const ref: MasteryNodeRef = {
+                                          d: dirIdx,
+                                          tier,
+                                          i: nodeIdx,
+                                        };
+                                        const on = build.masteryNodes.some(
+                                          (n) =>
+                                            masteryNodeKey(n) ===
+                                            masteryNodeKey(ref),
+                                        );
+                                        return (
+                                          <Button
+                                            key={`${dirIdx}-${tier}-${nodeIdx}`}
+                                            size="small"
+                                            type={on ? "primary" : "default"}
+                                            className="mastery-node"
+                                            onClick={() =>
+                                              toggleMasteryNode(ref)
+                                            }
+                                          >
+                                            {nodeIdx + 1}
+                                          </Button>
+                                        );
+                                      },
+                                    )}
                                   </div>
                                 </div>
-                              </div>
-                            </td>
-                            <td className="whitespace-nowrap text-right text-xs tabular-nums text-[var(--muted)]">
-                              {selectedWeapon ? "" : "\u00a0"}
-                            </td>
-                          </tr>
+                              );
+                            })}
+                          </div>
                         );
-                      }
-                      const isFlex = slot.id === null;
-                      if (isFlex) weaponFlexIdx += 1;
-                      const flexIdx = weaponFlexIdx;
-                      const selectedId = isFlex
-                        ? (build.weaponTraitIds[flexIdx] ?? null)
-                        : slot.id;
-                      const trait = selectedId
-                        ? getTrait(selectedId)
-                        : undefined;
-                      const poolOptions = isFlex
-                        ? flexibleWeaponTraitOptions(
-                            selectedWeapon,
-                            build.weaponTraitIds,
-                            flexIdx,
-                          ).map((t) => ({
-                            value: t.id,
-                            label: labelForName(t.name, locale),
-                            icon: traitIconSrc(t.id),
-                          }))
-                        : [];
-                      return (
-                        <tr key={`wtrait-${i}`}>
-                          <td className="w-6 text-center text-[10px] text-[var(--muted)]">
-                            {i + 1}
-                          </td>
-                          <td>
-                            {isFlex ? (
-                              <SearchableSelect
-                                compact
-                                withIcon
-                                value={selectedId}
-                                options={
-                                  selectedId &&
-                                  !poolOptions.some(
-                                    (o) => o.value === selectedId,
-                                  )
-                                    ? [
-                                        {
-                                          value: selectedId,
-                                          label: displayName(
-                                            trait,
-                                            selectedId,
-                                            locale,
-                                            m,
-                                          ),
-                                          icon: traitIconSrc(selectedId),
-                                        },
-                                        ...poolOptions,
-                                      ]
-                                    : poolOptions
-                                }
-                                onChange={(nextId) =>
-                                  updateBuild((prev) => {
-                                    const weaponTraitIds = [
-                                      ...prev.weaponTraitIds,
-                                    ];
-                                    weaponTraitIds[flexIdx] = nextId;
-                                    return { ...prev, weaponTraitIds };
-                                  })
-                                }
-                              />
-                            ) : (
-                              <div className="trait-pick">
-                                <TraitIcon
-                                  src={traitIconSrc(selectedId)}
-                                  alt=""
-                                />
-                                <div className="trait-pick-control">
-                                  <span
-                                    className="trait-slot trait-fixed"
-                                    title={m.fixedTrait}
-                                  >
-                                    {displayName(trait, selectedId, locale, m)}
-                                  </span>
-                                </div>
-                              </div>
-                            )}
-                          </td>
-                          <td className="whitespace-nowrap text-right text-xs tabular-nums text-[var(--muted)]">
-                            Slv {slot.level}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
+                      })}
+                    </div>
+                  ) : (
+                    <Typography.Text type="secondary">
+                      {m.noMasteryData}
+                    </Typography.Text>
+                  )}
+                </Card>
+              </Col>
 
-<div className="board-block overflow-visible">
-                <div className="board-head flex items-center gap-2">
-                  <span>{m.wrightstone}</span>
-                  <div className="min-w-0 flex-1">
-                    <SearchableSelect
-                      compact
-                      withIcon
-                      value={build.wrightstoneId}
-                      options={wrightstoneOptions}
-                      onChange={switchWrightstone}
-                      placeholder={m.selectWrightstone}
-                    />
-                  </div>
-                </div>
-                <table className="board-table board-table-slots">
-                  <tbody>
-                    {Array.from({ length: WRIGHTSTONE_TRAIT_ROWS }, (_, i) => {
-                      const slot = selectedWrightstone?.traits[i];
-                      if (!slot || !selectedWrightstone) {
-                        return (
-                          <tr key={`wstrait-pad-${i}`}>
-                            <td className="w-6 text-center text-[10px] text-[var(--muted)]">
-                              {i + 1}
-                            </td>
-                            <td>
-                              <div className="trait-pick" aria-hidden>
-                                <TraitIcon src={null} />
-                                <div className="trait-pick-control">
-                                  <div className="trait-slot trait-slot-muted">
-                                    {selectedWrightstone ? "\u00a0" : "—"}
-                                  </div>
-                                </div>
-                              </div>
-                            </td>
-                            <td className="whitespace-nowrap text-right text-xs tabular-nums text-[var(--muted)]">
-                              {selectedWrightstone ? "" : "\u00a0"}
-                            </td>
-                          </tr>
-                        );
-                      }
-                      const isFlex = slot.id === null;
-                      if (isFlex) wrightFlexIdx += 1;
-                      const flexIdx = wrightFlexIdx;
-                      const selectedId = isFlex
-                        ? (build.wrightstoneTraitIds[flexIdx] ?? null)
-                        : slot.id;
-                      const trait = selectedId
-                        ? getTrait(selectedId)
-                        : undefined;
-                      const poolOptions = isFlex
-                        ? flexibleWrightstoneTraitOptions(
-                            selectedWrightstone,
-                            build.characterId,
-                            build.wrightstoneTraitIds,
-                            flexIdx,
-                          ).map((t) => ({
-                            value: t.id,
-                            label: labelForName(t.name, locale),
-                            icon: traitIconSrc(t.id),
-                          }))
-                        : [];
-                      return (
-                        <tr key={`wstrait-${i}`}>
-                          <td className="w-6 text-center text-[10px] text-[var(--muted)]">
-                            {i + 1}
-                          </td>
-                          <td>
-                            {isFlex ? (
-                              <SearchableSelect
-                                compact
-                                withIcon
-                                value={selectedId}
-                                options={
-                                  selectedId &&
-                                  !poolOptions.some(
-                                    (o) => o.value === selectedId,
-                                  )
-                                    ? [
-                                        {
-                                          value: selectedId,
-                                          label: displayName(
-                                            trait,
-                                            selectedId,
-                                            locale,
-                                            m,
-                                          ),
-                                          icon: traitIconSrc(selectedId),
-                                        },
-                                        ...poolOptions,
-                                      ]
-                                    : poolOptions
-                                }
-                                onChange={(nextId) =>
-                                  updateBuild((prev) => {
-                                    const wrightstoneTraitIds = [
-                                      ...prev.wrightstoneTraitIds,
-                                    ];
-                                    wrightstoneTraitIds[flexIdx] = nextId;
-                                    return { ...prev, wrightstoneTraitIds };
-                                  })
-                                }
-                              />
-                            ) : (
-                              <div className="trait-pick">
-                                <TraitIcon
-                                  src={traitIconSrc(selectedId)}
-                                  alt=""
-                                />
-                                <div className="trait-pick-control">
-                                  <span
-                                    className="trait-slot trait-fixed"
-                                    title={m.fixedTrait}
-                                  >
-                                    {displayName(trait, selectedId, locale, m)}
-                                  </span>
-                                </div>
-                              </div>
-                            )}
-                          </td>
-                          <td className="whitespace-nowrap text-right text-xs tabular-nums text-[var(--muted)]">
-                            Slv {slot.level}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-
-<div className="board-block board-block-summons overflow-visible">
-              <div className="board-head">{m.summons}</div>
-              <table className="board-table">
-                <tbody>
-                  {build.summonSlots.map((traitId, index) => (
-                    <tr key={`summon-${index}`}>
-                      <td className="w-5 text-center text-[10px] text-[var(--muted)]">
-                        {index + 1}
-                      </td>
-                      <td>
+              <Col
+                xs={24}
+                sm={12}
+                lg={7}
+                className="build-col build-col-weapon"
+              >
+                <Card
+                  size="small"
+                  title={
+                    <Flex align="center" gap={8}>
+                      <span>{m.weapon}</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
                         <SearchableSelect
-                          compact
+                          value={build.weaponType}
+                          options={weaponOptions}
+                          onChange={switchWeapon}
+                          placeholder={m.selectWeapon}
+                        />
+                      </div>
+                    </Flex>
+                  }
+                  styles={{ body: { padding: 0 } }}
+                >
+                  <Table
+                    size="small"
+                    pagination={false}
+                    showHeader={false}
+                    rowKey="key"
+                    dataSource={weaponRows}
+                    columns={slotColumns}
+                  />
+                </Card>
+              </Col>
+
+              <Col
+                xs={24}
+                sm={12}
+                lg={6}
+                className="build-col build-col-wrightstone"
+              >
+                <Card
+                  size="small"
+                  title={
+                    <Flex align="center" gap={8}>
+                      <span>{m.wrightstone}</span>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <SearchableSelect
+                          withIcon
+                          value={build.wrightstoneId}
+                          options={wrightstoneOptions}
+                          onChange={switchWrightstone}
+                          placeholder={m.selectWrightstone}
+                        />
+                      </div>
+                    </Flex>
+                  }
+                  styles={{ body: { padding: 0 } }}
+                >
+                  <Table
+                    size="small"
+                    pagination={false}
+                    showHeader={false}
+                    rowKey="key"
+                    dataSource={wrightRows}
+                    columns={slotColumns}
+                  />
+                </Card>
+              </Col>
+
+              <Col
+                xs={24}
+                sm={12}
+                lg={5}
+                className="build-col build-col-summons"
+              >
+                <Card
+                  size="small"
+                  title={m.summons}
+                  styles={{ body: { padding: 0 } }}
+                >
+                  <Table
+                    size="small"
+                    pagination={false}
+                    showHeader={false}
+                    rowKey="key"
+                    dataSource={build.summonSlots.map((traitId, index) => ({
+                      key: `summon-${index}`,
+                      index: index + 1,
+                      trait: (
+                        <SearchableSelect
                           withIcon
                           value={traitId}
                           options={traitOptions}
@@ -980,50 +1120,77 @@ export function BuildEditor() {
                             })
                           }
                         />
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            <div className="board-block overflow-visible">
-              <div className="board-head">{m.abilities}</div>
-              <table className="board-table">
-                <tbody>
-                  {build.skillIndices.map((skillIndex, index) => {
-                    const occupied = new Set(
-                      build.skillIndices.flatMap((v, i) =>
-                        i !== index && v != null ? [v] : [],
                       ),
-                    );
-                    const options = skillOptions.filter(
-                      (o) => !occupied.has(Number(o.value)),
-                    );
-                    const orphan =
-                      skillIndex != null &&
-                      !options.some((o) => o.value === String(skillIndex))
-                        ? {
-                            value: String(skillIndex),
-                            label: displayName(
-                              getCharacterSkill(
-                                build.characterId,
-                                skillIndex,
+                    }))}
+                    columns={[
+                      {
+                        dataIndex: "index",
+                        width: 28,
+                        align: "center",
+                        render: (v: number) => (
+                          <Typography.Text
+                            type="secondary"
+                            style={{ fontSize: 11 }}
+                          >
+                            {v}
+                          </Typography.Text>
+                        ),
+                      },
+                      {
+                        dataIndex: "trait",
+                        render: (v: React.ReactNode) => v,
+                      },
+                    ]}
+                  />
+                </Card>
+              </Col>
+
+              <Col
+                xs={24}
+                sm={12}
+                lg={6}
+                className="build-col build-col-abilities"
+              >
+                <Card
+                  size="small"
+                  title={m.abilities}
+                  styles={{ body: { padding: 0 } }}
+                >
+                  <Table
+                    size="small"
+                    pagination={false}
+                    showHeader={false}
+                    rowKey="key"
+                    dataSource={build.skillIndices.map((skillIndex, index) => {
+                      const occupied = new Set(
+                        build.skillIndices.flatMap((v, i) =>
+                          i !== index && v != null ? [v] : [],
+                        ),
+                      );
+                      const options = skillOptions.filter(
+                        (o) => !occupied.has(Number(o.value)),
+                      );
+                      const orphan =
+                        skillIndex != null &&
+                        !options.some((o) => o.value === String(skillIndex))
+                          ? {
+                              value: String(skillIndex),
+                              label: displayName(
+                                getCharacterSkill(
+                                  build.characterId,
+                                  skillIndex,
+                                ),
+                                String(skillIndex),
+                                locale,
+                                m,
                               ),
-                              String(skillIndex),
-                              locale,
-                              m,
-                            ),
-                          }
-                        : null;
-                    return (
-                      <tr key={`skill-${index}`}>
-                        <td className="w-6 text-center text-[10px] text-[var(--muted)]">
-                          {index + 1}
-                        </td>
-                        <td>
+                            }
+                          : null;
+                      return {
+                        key: `skill-${index}`,
+                        index: index + 1,
+                        trait: (
                           <SearchableSelect
-                            compact
                             value={
                               skillIndex == null ? null : String(skillIndex)
                             }
@@ -1046,17 +1213,36 @@ export function BuildEditor() {
                               })
                             }
                           />
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+                        ),
+                      };
+                    })}
+                    columns={[
+                      {
+                        dataIndex: "index",
+                        width: 28,
+                        align: "center",
+                        render: (v: number) => (
+                          <Typography.Text
+                            type="secondary"
+                            style={{ fontSize: 11 }}
+                          >
+                            {v}
+                          </Typography.Text>
+                        ),
+                      },
+                      {
+                        dataIndex: "trait",
+                        render: (v: React.ReactNode) => v,
+                      },
+                    ]}
+                  />
+                </Card>
+              </Col>
 
-        </div>
-      </div>
-    </div>
+            </Row>
+          </Col>
+        </Row>
+      </Content>
+    </Layout>
   );
 }

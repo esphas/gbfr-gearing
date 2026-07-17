@@ -1,22 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PLACEHOLDER_ICON } from "@/lib/catalog";
 
 type Props = {
   src: string;
   alt: string;
   size?: number;
-  className?: string;
+  style?: React.CSSProperties;
 };
 
-export function AssetIcon({ src, alt, size = 40, className = "" }: Props) {
-  const [failed, setFailed] = useState(false);
+export function AssetIcon({ src, alt, size = 40, style }: Props) {
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
+  const failed = failedSrc === src;
   const resolved = failed ? PLACEHOLDER_ICON : src;
-
-  useEffect(() => {
-    setFailed(false);
-  }, [src]);
 
   return (
     // eslint-disable-next-line @next/next/no-img-element
@@ -25,8 +22,14 @@ export function AssetIcon({ src, alt, size = 40, className = "" }: Props) {
       alt={alt}
       width={size}
       height={size}
-      className={`rounded-md object-cover bg-[var(--surface-2)] ${className}`}
-      onError={() => setFailed(true)}
+      style={{
+        borderRadius: 6,
+        objectFit: "cover",
+        background: "var(--ant-color-fill-secondary, #f0f0f0)",
+        display: "block",
+        ...style,
+      }}
+      onError={() => setFailedSrc(src)}
     />
   );
 }

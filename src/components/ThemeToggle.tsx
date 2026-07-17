@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Button } from "antd";
 import { useLocale } from "@/components/LocaleProvider";
 
 export type Theme = "light" | "dark";
@@ -28,15 +29,16 @@ export function applyTheme(theme: Theme) {
 
 export const themeInitScript = `(function(){try{var t=localStorage.getItem(${JSON.stringify(THEME_STORAGE_KEY)});if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);else document.documentElement.setAttribute("data-theme","light");}catch(e){document.documentElement.setAttribute("data-theme","light");}})();`;
 
+function readInitialTheme(): Theme {
+  if (typeof document === "undefined") return "light";
+  const attr = document.documentElement.getAttribute("data-theme");
+  if (attr === "dark" || attr === "light") return attr;
+  return "light";
+}
+
 export function ThemeToggle() {
   const { m } = useLocale();
-  const [theme, setTheme] = useState<Theme>("light");
-
-  useEffect(() => {
-    const next = readStoredTheme();
-    setTheme(next);
-    applyTheme(next);
-  }, []);
+  const [theme, setTheme] = useState<Theme>(readInitialTheme);
 
   const toggle = () => {
     const next: Theme = theme === "light" ? "dark" : "light";
@@ -47,14 +49,12 @@ export function ThemeToggle() {
   const isLight = theme === "light";
 
   return (
-    <button
-      type="button"
-      className="btn-secondary !px-2 !py-1 !text-xs"
+    <Button
       onClick={toggle}
       aria-label={isLight ? m.themeAriaDark : m.themeAriaLight}
       title={isLight ? m.themeToDark : m.themeToLight}
     >
       {isLight ? m.themeDark : m.themeLight}
-    </button>
+    </Button>
   );
 }

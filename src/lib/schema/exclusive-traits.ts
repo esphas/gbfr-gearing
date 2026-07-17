@@ -10,11 +10,6 @@ export const EXCLUSIVE_TRAIT_SLOTS = [
 
 export type ExclusiveTraitSlot = (typeof EXCLUSIVE_TRAIT_SLOTS)[number];
 
-/**
- * Stable share-codec indices for exclusive traits.
- * Frozen at first publish (after base traits 0..105). Never renumber;
- * new base traits must use codecIndex >= 109.
- */
 export const EXCLUSIVE_TRAIT_CODEC_INDEX: Record<ExclusiveTraitSlot, number> = {
   awakeningA: 106,
   awakeningB: 107,

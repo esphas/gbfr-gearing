@@ -216,7 +216,8 @@ export function flexibleWrightstoneTraitOptions(
   return traitsForCharacter(characterId).filter((t) => !occupied.has(t.id));
 }
 
-export function traitsForCharacter(_characterId: string): TraitEntry[] {
+export function traitsForCharacter(characterId: string): TraitEntry[] {
+  void characterId;
   return catalog.traits.filter((t) => !t.restricted);
 }
 

@@ -1,26 +1,16 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Noto_Sans_SC, Noto_Serif_SC } from "next/font/google";
-import { themeInitScript } from "@/components/ThemeToggle";
-import { localeInitScript } from "@/lib/i18n/locale";
+import { Noto_Sans_SC } from "next/font/google";
+import { AntdProvider } from "@/components/AntdProvider";
 import { FontPrewarm } from "@/components/FontPrewarm";
 import { LocaleProvider } from "@/components/LocaleProvider";
+import { themeInitScript } from "@/components/ThemeToggle";
+import { localeInitScript } from "@/lib/i18n/locale";
 import "./globals.css";
 
 const body = Noto_Sans_SC({
   variable: "--font-body",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-});
-
-const display = Noto_Serif_SC({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -37,17 +27,19 @@ export default function RootLayout({
     <html
       lang="zh-CN"
       data-theme="light"
-      className={`${body.variable} ${display.variable} ${geistMono.variable} h-full antialiased`}
+      className={body.variable}
       suppressHydrationWarning
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <script dangerouslySetInnerHTML={{ __html: localeInitScript }} />
       </head>
-      <body className="min-h-full flex flex-col">
+      <body>
         <LocaleProvider>
-          <FontPrewarm />
-          {children}
+          <AntdProvider>
+            <FontPrewarm />
+            {children}
+          </AntdProvider>
         </LocaleProvider>
       </body>
     </html>

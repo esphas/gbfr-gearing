@@ -1,5 +1,6 @@
 "use client";
 
+import { Flex, Typography } from "antd";
 import {
   catalog,
   displayName,
@@ -14,12 +15,8 @@ import {
 } from "@/lib/catalog";
 import type { BuildState } from "@/lib/schema/build";
 import {
-  computeDirectionBonuses,
-  computeMasteryPoints,
   masteryNodeKey,
   type MasteryNodeRef,
-  type MasteryPointBudget,
-  type DirectionBonusState,
 } from "@/lib/schema/mastery";
 import type { MasteryTier, MasteryTree, Weapon, Wrightstone } from "@/lib/schema/catalog";
 import {
@@ -56,12 +53,9 @@ export type ExportCardModel = {
   wrightstone: Wrightstone | undefined;
   masteryTree: MasteryTree | undefined;
   traitRows: TraitLevelRow[];
-  masteryBudget: MasteryPointBudget | null;
-  directionBonuses: DirectionBonusState[];
   selectedKeys: Set<string>;
   weaponName: string;
   wrightstoneName: string;
-  masteryBudgetLine: string | null;
 };
 
 export function getExportCardModel(
@@ -84,12 +78,6 @@ export function getExportCardModel(
     weapon,
     wrightstone,
   );
-  const masteryBudget = masteryTree
-    ? computeMasteryPoints(masteryTree, build.masteryNodes, catalog.meta)
-    : null;
-  const directionBonuses = masteryTree
-    ? computeDirectionBonuses(masteryTree, build.masteryNodes, catalog.meta)
-    : [];
   const selectedKeys = new Set(
     build.masteryNodes.map((n) => masteryNodeKey(n)),
   );
@@ -102,13 +90,6 @@ export function getExportCardModel(
       wrightstone.name["zh-CN"])
     : m.selectWrightstone;
 
-  const masteryBudgetLine = masteryBudget
-    ? TIER_ORDER.map(
-        (tier) =>
-          `${tierLabel(tier, m)} ${masteryBudget[tier].used}/${masteryBudget[tier].max}`,
-      ).join(" · ")
-    : null;
-
   return {
     build,
     locale,
@@ -119,13 +100,33 @@ export function getExportCardModel(
     wrightstone,
     masteryTree,
     traitRows,
-    masteryBudget,
-    directionBonuses,
     selectedKeys,
     weaponName,
     wrightstoneName,
-    masteryBudgetLine,
   };
+}
+
+function ExportBlock({
+  title,
+  children,
+  className = "",
+}: {
+  title?: React.ReactNode;
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <section className={`export-block ${className}`.trim()}>
+      {title != null ? (
+        <div className="export-block-head">
+          <Typography.Text strong style={{ fontSize: "inherit" }}>
+            {title}
+          </Typography.Text>
+        </div>
+      ) : null}
+      {children}
+    </section>
+  );
 }
 
 export function TraitRow({
@@ -187,11 +188,11 @@ export function SlotTraitLine({
   return (
     <div className="export-slot-line">
       <TraitIcon src={traitIconSrc(id, characterId)} size={16} />
-      <span className="min-w-0 truncate">
+      <span className="export-slot-name">
         {displayName(trait, id, locale, m)}
       </span>
       {level != null ? (
-        <span className="export-slot-lv tabular-nums">Lv.{level}</span>
+        <span className="export-slot-lv">Lv.{level}</span>
       ) : null}
     </div>
   );
@@ -202,18 +203,14 @@ export function MasteryDirectionBlock({
   dirName,
   selectedKeys,
   m,
-  variant = "grid",
 }: {
   dirIndex: number;
   dirName: string;
   selectedKeys: Set<string>;
   m: UiMessages;
-  variant?: "grid" | "rows";
 }) {
   return (
-    <div
-      className={`export-mastery-dir export-mastery-dir--${dirIndex}${variant === "rows" ? " export-mastery-dir--rows" : ""}`}
-    >
+    <div className={`export-mastery-dir export-mastery-dir--${dirIndex}`}>
       <div className="export-mastery-dir-head">{dirName}</div>
       {TIER_ORDER.map((tier) => {
         const nodeCount = catalog.meta.masteryDirectionCounts[tier];
@@ -253,7 +250,7 @@ export function QrBlock({
   size?: number;
 }) {
   return (
-    <div className="export-qr export-qr--compact">
+    <div className="export-qr">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={qrDataUrl} alt="" width={size} height={size} />
     </div>
@@ -263,49 +260,36 @@ export function QrBlock({
 export function CharacterBlock({
   model,
   showNote,
-  iconSize = 36,
 }: {
   model: ExportCardModel;
   showNote: boolean;
-  iconSize?: number;
 }) {
   const { build, characterName } = model;
   const character = getCharacter(build.characterId);
   return (
-    <section className="export-block export-character">
-      <AssetIcon
-        src={resolveIcon("characters", build.characterId, character?.icon)}
-        alt={characterName}
-        size={iconSize}
-      />
-      <div className="min-w-0">
-        <div className="export-character-name">{characterName}</div>
-        {showNote && build.note?.trim() ? (
-          <div className="export-note">{build.note.trim()}</div>
-        ) : null}
-      </div>
-    </section>
+    <ExportBlock className="export-character">
+      <Flex align="center" gap={8}>
+        <AssetIcon
+          src={resolveIcon("characters", build.characterId, character?.icon)}
+          alt={characterName}
+          size={36}
+        />
+        <div style={{ minWidth: 0 }}>
+          <div className="export-character-name">{characterName}</div>
+          {showNote && build.note?.trim() ? (
+            <div className="export-note">{build.note.trim()}</div>
+          ) : null}
+        </div>
+      </Flex>
+    </ExportBlock>
   );
 }
 
-export function SigilsBlock({
-  model,
-  dualColumn = false,
-}: {
-  model: ExportCardModel;
-  dualColumn?: boolean;
-}) {
+export function SigilsBlock({ model }: { model: ExportCardModel }) {
   const { build, locale, m } = model;
   return (
-    <section className="export-block">
-      <div className="export-block-head">{m.sigils}</div>
-      <div
-        className={
-          dualColumn
-            ? "export-sigil-list export-sigil-list--dual"
-            : "export-sigil-list"
-        }
-      >
+    <ExportBlock title={m.sigils}>
+      <div className="export-sigil-list">
         {build.sigilSlots.map((slot, index) => (
           <div key={index} className="export-sigil-row">
             <span className="export-sigil-idx">{index + 1}</span>
@@ -324,7 +308,7 @@ export function SigilsBlock({
           </div>
         ))}
       </div>
-    </section>
+    </ExportBlock>
   );
 }
 
@@ -355,17 +339,16 @@ export function MasteryStacked({ model }: { model: ExportCardModel }) {
 
   if (!masteryTree) {
     return (
-      <section className="export-block">
-        <div className="export-block-head">{m.mastery}</div>
+      <ExportBlock title={m.mastery}>
         <p className="export-empty">{m.noMasteryData}</p>
-      </section>
+      </ExportBlock>
     );
   }
 
   return (
     <>
       {masteryTree.map((dir, dirIdx) => (
-        <section key={dirIdx} className="export-block">
+        <ExportBlock key={dirIdx}>
           <MasteryDirectionBlock
             dirIndex={dirIdx}
             dirName={
@@ -374,7 +357,7 @@ export function MasteryStacked({ model }: { model: ExportCardModel }) {
             selectedKeys={selectedKeys}
             m={m}
           />
-        </section>
+        </ExportBlock>
       ))}
     </>
   );
@@ -383,10 +366,7 @@ export function MasteryStacked({ model }: { model: ExportCardModel }) {
 export function WeaponBlock({ model }: { model: ExportCardModel }) {
   const { build, weapon, weaponName, locale, m } = model;
   return (
-    <section className="export-block">
-      <div className="export-block-head truncate" title={weaponName}>
-        {weaponName}
-      </div>
+    <ExportBlock title={weaponName}>
       <div className="export-equip-traits">
         {weapon
           ? (() => {
@@ -418,17 +398,14 @@ export function WeaponBlock({ model }: { model: ExportCardModel }) {
               />
             ))}
       </div>
-    </section>
+    </ExportBlock>
   );
 }
 
 export function WrightstoneBlock({ model }: { model: ExportCardModel }) {
   const { build, wrightstone, wrightstoneName, locale, m } = model;
   return (
-    <section className="export-block">
-      <div className="export-block-head truncate" title={wrightstoneName}>
-        {wrightstoneName}
-      </div>
+    <ExportBlock title={wrightstoneName}>
       <div className="export-equip-traits">
         {wrightstone
           ? (() => {
@@ -460,15 +437,14 @@ export function WrightstoneBlock({ model }: { model: ExportCardModel }) {
               />
             ))}
       </div>
-    </section>
+    </ExportBlock>
   );
 }
 
 export function SummonsBlock({ model }: { model: ExportCardModel }) {
   const { build, locale, m } = model;
   return (
-    <section className="export-block">
-      <div className="export-block-head">{m.summons}</div>
+    <ExportBlock title={m.summons}>
       <div className="export-equip-traits">
         {build.summonSlots.map((id, i) => (
           <SlotTraitLine
@@ -480,15 +456,14 @@ export function SummonsBlock({ model }: { model: ExportCardModel }) {
           />
         ))}
       </div>
-    </section>
+    </ExportBlock>
   );
 }
 
 export function AbilitiesBlock({ model }: { model: ExportCardModel }) {
   const { build, locale, m } = model;
   return (
-    <section className="export-block">
-      <div className="export-block-head">{m.abilities}</div>
+    <ExportBlock title={m.abilities}>
       <div className="export-equip-traits">
         {build.skillIndices.map((skillIndex, i) => {
           const skill =
@@ -498,7 +473,7 @@ export function AbilitiesBlock({ model }: { model: ExportCardModel }) {
           return (
             <div key={i} className="export-slot-line">
               <span className="export-sigil-idx">{i + 1}</span>
-              <span className="min-w-0 truncate">
+              <span className="export-slot-name">
                 {skill
                   ? (resolveLocalizedName(skill.name, locale) ??
                     skill.name["zh-CN"])
@@ -508,7 +483,7 @@ export function AbilitiesBlock({ model }: { model: ExportCardModel }) {
           );
         })}
       </div>
-    </section>
+    </ExportBlock>
   );
 }
 
@@ -523,17 +498,15 @@ export function TraitTotalsBlock({
 
   if (traitRows.length === 0) {
     return (
-      <section className="export-block">
-        <div className="export-block-head">{m.traitTotals}</div>
+      <ExportBlock title={m.traitTotals}>
         <p className="export-empty">{m.noTraits}</p>
-      </section>
+      </ExportBlock>
     );
   }
 
   if (columns && columns.length > 0) {
     return (
-      <section className="export-block export-trait-totals-measured">
-        <div className="export-block-head">{m.traitTotals}</div>
+      <ExportBlock title={m.traitTotals} className="export-trait-totals-measured">
         <div
           className={`export-trait-cols${columns.length > 1 ? " export-trait-cols--dual" : ""}`}
         >
@@ -553,13 +526,12 @@ export function TraitTotalsBlock({
             </ul>
           ))}
         </div>
-      </section>
+      </ExportBlock>
     );
   }
 
   return (
-    <section className="export-block">
-      <div className="export-block-head">{m.traitTotals}</div>
+    <ExportBlock title={m.traitTotals}>
       <ul className="export-trait-grid">
         {traitRows.map((row) => (
           <TraitRow
@@ -573,6 +545,6 @@ export function TraitTotalsBlock({
           />
         ))}
       </ul>
-    </section>
+    </ExportBlock>
   );
 }

@@ -52,9 +52,9 @@ export function BuildExportPortrait({
                 character?.icon,
               )}
               alt={model.characterName}
-              size={28}
+              size={36}
             />
-            <div className="min-w-0">
+            <div style={{ minWidth: 0, flex: 1 }}>
               <div className="export-character-name">{model.characterName}</div>
               {build.note ? (
                 <div className="export-note">{build.note}</div>
