@@ -601,7 +601,7 @@ export function BuildEditor() {
 
           </div>
 
-          <div className="flex min-w-0 flex-col gap-2">
+          <div className="build-mastery-col flex min-w-0 flex-col gap-2">
             <div className="board-block min-w-0 overflow-auto">
               {masteryBudget ? (
                 <div className="flex flex-wrap items-center gap-2 border-b border-[var(--border)] px-2 py-1 text-[10px] text-[var(--muted)]">

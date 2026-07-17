@@ -141,11 +141,11 @@ export function BuildExportLandscape({
             <SummonsBlock model={model} />
             <AbilitiesBlock model={model} />
             <div className="export-landscape-brand">
+              <QrBlock qrDataUrl={qrDataUrl} size={64} />
               <div className="export-landscape-brand-text">
                 <div className="export-title">{m.appTitle}</div>
                 <div className="export-landscape-site-url">{siteUrl}</div>
               </div>
-              <QrBlock qrDataUrl={qrDataUrl} size={64} />
             </div>
           </div>
         </div>

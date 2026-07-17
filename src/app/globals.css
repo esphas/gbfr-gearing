@@ -215,6 +215,18 @@ body {
   .build-main {
     grid-template-columns: 1fr;
   }
+
+  .build-char-col {
+    order: 1;
+  }
+
+  .build-bottom-row {
+    order: 2;
+  }
+
+  .build-mastery-col {
+    order: 3;
+  }
 }
 
 
@@ -1125,10 +1137,10 @@ body {
 
 .export-landscape-brand {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  gap: 0.3rem;
+  gap: 0.25rem;
   padding: 0.05rem 0.1rem;
   min-width: 0;
   background: transparent;
@@ -1137,6 +1149,7 @@ body {
 
 .export-landscape-brand-text {
   min-width: 0;
+  width: 100%;
   text-align: right;
   display: flex;
   flex-direction: column;
@@ -1149,8 +1162,7 @@ body {
   line-height: 1.2;
   color: var(--muted);
   text-align: right;
-  word-break: break-all;
-  max-width: 9rem;
+  white-space: nowrap;
 }
 
 .export-landscape-brand .export-title {
