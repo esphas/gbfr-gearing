@@ -7,7 +7,7 @@ export function LoadingFallback() {
   const { m } = useLocale();
   return (
     <div style={{ padding: 48, display: "flex", justifyContent: "center" }}>
-      <Spin tip={m.loading} size="large">
+      <Spin description={m.loading} size="large">
         <div style={{ padding: 32 }} />
       </Spin>
     </div>

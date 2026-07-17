@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "antd";
+import { MoonOutlined, SunOutlined } from "@ant-design/icons";
+import { Button, Tooltip } from "antd";
 import { useLocale } from "@/components/LocaleProvider";
 
 export type Theme = "light" | "dark";
@@ -47,14 +48,17 @@ export function ThemeToggle() {
   };
 
   const isLight = theme === "light";
+  const tip = isLight ? m.themeToDark : m.themeToLight;
+  const aria = isLight ? m.themeAriaDark : m.themeAriaLight;
 
   return (
-    <Button
-      onClick={toggle}
-      aria-label={isLight ? m.themeAriaDark : m.themeAriaLight}
-      title={isLight ? m.themeToDark : m.themeToLight}
-    >
-      {isLight ? m.themeDark : m.themeLight}
-    </Button>
+    <Tooltip title={tip}>
+      <Button
+        type="text"
+        icon={isLight ? <MoonOutlined /> : <SunOutlined />}
+        onClick={toggle}
+        aria-label={aria}
+      />
+    </Tooltip>
   );
 }

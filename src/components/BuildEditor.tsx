@@ -489,7 +489,7 @@ export function BuildEditor() {
         </Space>
       </Header>
       <Content style={{ padding: 24, textAlign: "center" }}>
-        <Spin tip={m.loading} />
+        <Spin description={m.loading} />
       </Content>
       </Layout>
     );
@@ -992,8 +992,7 @@ export function BuildEditor() {
                                           <Button
                                             key={`${dirIdx}-${tier}-${nodeIdx}`}
                                             size="small"
-                                            type={on ? "primary" : "default"}
-                                            className="mastery-node"
+                                            className={`mastery-node${on ? " on" : ""}`}
                                             onClick={() =>
                                               toggleMasteryNode(ref)
                                             }

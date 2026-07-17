@@ -7,10 +7,16 @@
   --border: #f0f0f0;
   --muted: #8c8c8c;
   --accent: #2a8fb0;
-  --mastery-1-node: color-mix(in srgb, #5b8fad 28%, var(--surface));
-  --mastery-2-node: color-mix(in srgb, #6a9a7a 28%, var(--surface));
-  --mastery-3-node: color-mix(in srgb, #a0885c 28%, var(--surface));
-  --mastery-on: color-mix(in srgb, var(--accent) 28%, var(--surface-2));
+  --mastery-1: #4a7d9c;
+  --mastery-2: #4f8f6e;
+  --mastery-3: #a67c52;
+  --mastery-1-node: #e8f0f5;
+  --mastery-2-node: #e8f3ec;
+  --mastery-3-node: #f5eee6;
+  --mastery-1-on: #3d6f8f;
+  --mastery-2-on: #3f7a5c;
+  --mastery-3-on: #916844;
+  --mastery-on-fg: #ffffff;
   --trait-level-gear: #1f1f1f;
   --trait-level-sigil: #b8860b;
   --trait-icon-size: 1.125rem;
@@ -25,10 +31,16 @@
   --border: #303030;
   --muted: #8c8c8c;
   --accent: #5eb3d4;
-  --mastery-1-node: color-mix(in srgb, #2a4a66 62%, var(--surface));
-  --mastery-2-node: color-mix(in srgb, #2a5540 62%, var(--surface));
-  --mastery-3-node: color-mix(in srgb, #55482a 62%, var(--surface));
-  --mastery-on: color-mix(in srgb, var(--accent) 35%, #1a3348);
+  --mastery-1: #6a9bb8;
+  --mastery-2: #6aab88;
+  --mastery-3: #c49a6c;
+  --mastery-1-node: #243038;
+  --mastery-2-node: #24342c;
+  --mastery-3-node: #322c24;
+  --mastery-1-on: #5a9ec0;
+  --mastery-2-on: #5aab7c;
+  --mastery-3-on: #c09058;
+  --mastery-on-fg: #0c1210;
   --trait-level-gear: #f0f0f0;
   --trait-level-sigil: #e8b84a;
   color-scheme: dark;
@@ -88,7 +100,6 @@ body {
   order: 20;
 }
 
-/* Phone: note full-width on second row */
 @media (max-width: 767px) {
   .build-header-note {
     order: 10;
@@ -99,7 +110,6 @@ body {
   }
 }
 
-/* Small phone: brand / actions+toggles / note */
 @media (max-width: 359px) {
   .build-header-brand {
     flex: 1 1 100%;
@@ -171,42 +181,60 @@ body {
 }
 
 .mastery-dir:nth-child(1) {
-  border-color: color-mix(in srgb, #5b8fad 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #5b8fad 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-1) 35%, var(--border));
 }
 
 .mastery-dir:nth-child(1) .mastery-dir-head {
-  background: color-mix(in srgb, #5b8fad 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-1) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-1) 55%, var(--foreground));
 }
 
-.mastery-dir:nth-child(1) .mastery-node:not(.ant-btn-primary) {
+.mastery-dir:nth-child(1) .mastery-node:not(.on) {
   background: var(--mastery-1-node) !important;
+  color: color-mix(in srgb, var(--mastery-1) 45%, var(--foreground)) !important;
+}
+
+.mastery-dir:nth-child(1) .mastery-node.on {
+  background: var(--mastery-1-on) !important;
+  color: var(--mastery-on-fg) !important;
 }
 
 .mastery-dir:nth-child(2) {
-  border-color: color-mix(in srgb, #6a9a7a 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #6a9a7a 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-2) 35%, var(--border));
 }
 
 .mastery-dir:nth-child(2) .mastery-dir-head {
-  background: color-mix(in srgb, #6a9a7a 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-2) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-2) 55%, var(--foreground));
 }
 
-.mastery-dir:nth-child(2) .mastery-node:not(.ant-btn-primary) {
+.mastery-dir:nth-child(2) .mastery-node:not(.on) {
   background: var(--mastery-2-node) !important;
+  color: color-mix(in srgb, var(--mastery-2) 45%, var(--foreground)) !important;
+}
+
+.mastery-dir:nth-child(2) .mastery-node.on {
+  background: var(--mastery-2-on) !important;
+  color: var(--mastery-on-fg) !important;
 }
 
 .mastery-dir:nth-child(3) {
-  border-color: color-mix(in srgb, #a0885c 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #a0885c 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-3) 35%, var(--border));
 }
 
 .mastery-dir:nth-child(3) .mastery-dir-head {
-  background: color-mix(in srgb, #a0885c 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-3) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-3) 55%, var(--foreground));
 }
 
-.mastery-dir:nth-child(3) .mastery-node:not(.ant-btn-primary) {
+.mastery-dir:nth-child(3) .mastery-node:not(.on) {
   background: var(--mastery-3-node) !important;
+  color: color-mix(in srgb, var(--mastery-3) 45%, var(--foreground)) !important;
+}
+
+.mastery-dir:nth-child(3) .mastery-node.on {
+  background: var(--mastery-3-on) !important;
+  color: var(--mastery-on-fg) !important;
 }
 
 .mastery-dir-head {
@@ -275,11 +303,10 @@ body {
   overflow: hidden;
 }
 
-.mastery-node.ant-btn-primary {
-  outline: 1px solid var(--accent);
-  outline-offset: -1px;
-  background: var(--mastery-on) !important;
+.mastery-node.ant-btn.on {
   font-weight: 600;
+  outline: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  outline-offset: -1px;
 }
 
 @media (max-width: 767px) {
@@ -389,8 +416,11 @@ body {
 }
 
 .export-card--landscape {
-  width: 920px;
+  width: max-content;
+  overflow: hidden;
+  box-sizing: border-box;
   --export-trait-slot-w: 6.35rem;
+  --export-sigil-slot-w: 5.45rem;
   --export-slot-lv-w: 2.15rem;
 }
 
@@ -481,8 +511,10 @@ body {
   font-size: 0.55rem;
 }
 
-.export-card--portrait .export-mastery-dir {
-  padding-left: 3px;
+.export-card--portrait .export-mastery-grid {
+  column-gap: 0.14rem;
+  row-gap: 0;
+  padding: 0;
 }
 
 .export-card--portrait .export-mastery-dir-head {
@@ -693,13 +725,15 @@ body {
 
 .export-landscape-shell {
   display: grid;
-  grid-template-columns: minmax(17rem, 1fr) minmax(0, 2.55fr);
+  grid-template-columns: max-content max-content;
   gap: 0.35rem;
   align-items: start;
+  width: max-content;
 }
 
 .export-landscape-totals {
-  min-width: 0;
+  min-width: 15rem;
+  width: max-content;
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
@@ -767,15 +801,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
+  width: max-content;
   min-width: 0;
 }
 
 .export-landscape-top {
   display: grid;
-  grid-template-columns: minmax(11rem, 0.8fr) minmax(0, 2.4fr);
+  grid-template-columns: max-content minmax(0, 1fr);
   gap: 0.3rem;
   align-items: stretch;
-  min-width: 0;
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
 }
 
 .export-landscape-mid {
@@ -784,6 +821,8 @@ body {
   gap: 0.25rem;
   min-width: 0;
   min-height: 0;
+  width: max-content;
+  max-width: 100%;
 }
 
 .export-landscape-mid .export-block:last-child {
@@ -791,6 +830,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  width: max-content;
+  max-width: 100%;
 }
 
 .export-landscape-mid .export-sigil-list {
@@ -801,19 +842,23 @@ body {
   gap: 0.1rem;
   padding: 0.15rem 0.2rem 0.2rem;
   min-height: 0;
+  width: max-content;
+  max-width: 100%;
 }
 
 .export-card--landscape .export-sigil-row {
   grid-template-columns:
-    0.8rem
-    var(--export-trait-slot-w)
-    var(--export-trait-slot-w);
-  gap: 0.18rem;
+    0.75rem
+    var(--export-sigil-slot-w)
+    var(--export-sigil-slot-w);
+  gap: 0.2rem;
+  width: max-content;
+  max-width: 100%;
   justify-content: start;
 }
 
 .export-card--landscape .export-sigil-row .export-slot-line {
-  width: var(--export-trait-slot-w);
+  width: var(--export-sigil-slot-w);
   gap: 0.1rem;
   font-size: 0.55rem;
 }
@@ -821,6 +866,10 @@ body {
 .export-card--landscape .export-character {
   padding: 0.2rem 0.28rem;
   flex-shrink: 0;
+  width: 0;
+  min-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .export-card--landscape .export-note {
@@ -830,17 +879,25 @@ body {
   overflow: hidden;
   line-height: 1.15;
   word-break: break-word;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
 .export-landscape-mastery {
   min-width: 0;
   min-height: 0;
+  overflow: hidden;
 }
 
 .export-landscape-mastery .export-mastery-grid {
   padding: 0;
   height: 100%;
+  width: 100%;
+  min-width: 0;
+  column-gap: 0.18rem;
+  row-gap: 0;
   align-content: start;
+  box-sizing: border-box;
 }
 
 .export-landscape-brand {
@@ -883,10 +940,11 @@ body {
     calc(var(--export-trait-slot-w) + var(--export-slot-lv-w) + 0.35rem)
     var(--export-trait-slot-w)
     var(--export-trait-slot-w)
-    minmax(0, 1fr);
+    max-content;
   gap: 0.25rem;
   align-items: stretch;
-  min-width: 0;
+  width: max-content;
+  box-sizing: border-box;
 }
 
 .export-landscape-bottom > .export-block {
@@ -917,8 +975,12 @@ body {
 .export-mastery-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.25rem;
+  grid-template-rows: repeat(5, auto);
+  column-gap: 0.25rem;
+  row-gap: 0;
   padding: 0.25rem;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .export-mastery-dir {
@@ -927,47 +989,66 @@ body {
   border-radius: 4px;
   overflow: hidden;
   background: var(--surface);
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
 }
 
 .export-mastery-dir--0 {
-  border-color: color-mix(in srgb, #5b8fad 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #5b8fad 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-1) 35%, var(--border));
 }
 
 .export-mastery-dir--0 .export-mastery-dir-head {
-  background: color-mix(in srgb, #5b8fad 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-1) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-1) 55%, var(--foreground));
 }
 
 .export-mastery-dir--0 .export-mastery-node {
   background: var(--mastery-1-node);
+  color: color-mix(in srgb, var(--mastery-1) 45%, var(--foreground));
+}
+
+.export-mastery-dir--0 .export-mastery-node.on {
+  background: var(--mastery-1-on);
+  color: var(--mastery-on-fg);
 }
 
 .export-mastery-dir--1 {
-  border-color: color-mix(in srgb, #6a9a7a 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #6a9a7a 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-2) 35%, var(--border));
 }
 
 .export-mastery-dir--1 .export-mastery-dir-head {
-  background: color-mix(in srgb, #6a9a7a 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-2) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-2) 55%, var(--foreground));
 }
 
 .export-mastery-dir--1 .export-mastery-node {
   background: var(--mastery-2-node);
+  color: color-mix(in srgb, var(--mastery-2) 45%, var(--foreground));
+}
+
+.export-mastery-dir--1 .export-mastery-node.on {
+  background: var(--mastery-2-on);
+  color: var(--mastery-on-fg);
 }
 
 .export-mastery-dir--2 {
-  border-color: color-mix(in srgb, #a0885c 45%, var(--border));
-  box-shadow: inset 3px 0 0 color-mix(in srgb, #a0885c 70%, transparent);
+  border-color: color-mix(in srgb, var(--mastery-3) 35%, var(--border));
 }
 
 .export-mastery-dir--2 .export-mastery-dir-head {
-  background: color-mix(in srgb, #a0885c 18%, var(--surface-2));
+  background: color-mix(in srgb, var(--mastery-3) 14%, var(--surface-2));
+  color: color-mix(in srgb, var(--mastery-3) 55%, var(--foreground));
 }
 
 .export-mastery-dir--2 .export-mastery-node {
   background: var(--mastery-3-node);
+  color: color-mix(in srgb, var(--mastery-3) 45%, var(--foreground));
+}
+
+.export-mastery-dir--2 .export-mastery-node.on {
+  background: var(--mastery-3-on);
+  color: var(--mastery-on-fg);
 }
 
 .export-mastery-dir-head {
@@ -976,6 +1057,9 @@ body {
   font-weight: 600;
   text-align: center;
   border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .export-mastery-tier {
@@ -1007,7 +1091,6 @@ body {
 }
 
 .export-mastery-node {
-  color: var(--foreground);
   font-size: 0.52rem;
   line-height: 1.15;
   padding: 0.14rem 0.1rem;
@@ -1015,8 +1098,7 @@ body {
 }
 
 .export-mastery-node.on {
-  outline: 1px solid var(--accent);
-  outline-offset: -1px;
-  background: var(--mastery-on) !important;
   font-weight: 600;
+  outline: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  outline-offset: -1px;
 }

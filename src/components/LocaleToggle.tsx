@@ -1,6 +1,7 @@
 "use client";
 
-import { Button } from "antd";
+import { GlobalOutlined } from "@ant-design/icons";
+import { Button, Tooltip } from "antd";
 import { useLocale } from "@/components/LocaleProvider";
 import type { Locale } from "@/lib/i18n/locale";
 
@@ -13,8 +14,13 @@ export function LocaleToggle() {
   };
 
   return (
-    <Button onClick={toggle} aria-label={m.localeAria} title={m.localeAria}>
-      {locale === "zh-CN" ? m.localeEn : m.localeZh}
-    </Button>
+    <Tooltip title={m.localeAria}>
+      <Button
+        type="text"
+        icon={<GlobalOutlined />}
+        onClick={toggle}
+        aria-label={m.localeAria}
+      />
+    </Tooltip>
   );
 }

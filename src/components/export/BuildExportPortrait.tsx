@@ -11,7 +11,7 @@ import { AssetIcon } from "@/components/AssetIcon";
 import {
   AbilitiesBlock,
   getExportCardModel,
-  MasteryStacked,
+  MasterySideBySide,
   QrBlock,
   SigilsBlock,
   SummonsBlock,
@@ -72,7 +72,7 @@ export function BuildExportPortrait({
         <SummonsBlock model={model} />
         <AbilitiesBlock model={model} />
       </div>
-      <MasteryStacked model={model} />
+      <MasterySideBySide model={model} />
     </div>
   );
 }

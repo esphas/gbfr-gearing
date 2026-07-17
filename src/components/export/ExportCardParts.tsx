@@ -334,35 +334,6 @@ export function MasterySideBySide({ model }: { model: ExportCardModel }) {
   );
 }
 
-export function MasteryStacked({ model }: { model: ExportCardModel }) {
-  const { m, locale, masteryTree, selectedKeys } = model;
-
-  if (!masteryTree) {
-    return (
-      <ExportBlock title={m.mastery}>
-        <p className="export-empty">{m.noMasteryData}</p>
-      </ExportBlock>
-    );
-  }
-
-  return (
-    <>
-      {masteryTree.map((dir, dirIdx) => (
-        <ExportBlock key={dirIdx}>
-          <MasteryDirectionBlock
-            dirIndex={dirIdx}
-            dirName={
-              resolveLocalizedName(dir.name, locale) ?? dir.name["zh-CN"]
-            }
-            selectedKeys={selectedKeys}
-            m={m}
-          />
-        </ExportBlock>
-      ))}
-    </>
-  );
-}
-
 export function WeaponBlock({ model }: { model: ExportCardModel }) {
   const { build, weapon, weaponName, locale, m } = model;
   return (
