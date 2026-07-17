@@ -280,8 +280,8 @@ export function CharacterBlock({
       />
       <div className="min-w-0">
         <div className="export-character-name">{characterName}</div>
-        {showNote && build.note ? (
-          <div className="export-note">{build.note}</div>
+        {showNote && build.note?.trim() ? (
+          <div className="export-note">{build.note.trim()}</div>
         ) : null}
       </div>
     </section>

@@ -81,7 +81,6 @@ export const weaponTraitsFileSchema = z.object({
   terminus: weaponTypeTraitsSchema,
 });
 
-/** Stable share-codec index; 0..254 (encoded as index+1 in one byte). Never renumber. */
 export const codecIndexSchema = z.number().int().nonnegative().max(254);
 
 function refineUniqueCodecIndices(

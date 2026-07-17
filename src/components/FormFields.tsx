@@ -31,7 +31,6 @@ type Props = {
   compact?: boolean;
   disabled?: boolean;
   withIcon?: boolean;
-  /** Highlight the field (e.g. restricted sigil trait). */
   invalid?: boolean;
 };
 

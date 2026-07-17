@@ -449,8 +449,8 @@ export function BuildEditor() {
 
   return (
     <div className="build-board mx-auto w-full max-w-[1720px] px-2 py-3 md:px-3">
-      <div className="mb-2 flex flex-wrap items-center gap-2 text-xs">
-        <span className="inline-flex items-center gap-1.5 font-[family-name:var(--font-display)] text-sm font-semibold tracking-wide text-[var(--accent)]">
+      <div className="build-toolbar mb-2 text-xs">
+        <span className="build-toolbar-title">
           {m.appTitle}
           {dirty ? (
             <span
@@ -460,17 +460,19 @@ export function BuildEditor() {
             />
           ) : null}
         </span>
-        <ShareLinkMenu
-          shareUrl={shareUrl}
-          open={shareMenuOpen}
-          onOpenChange={setShareMenuOpen}
-          onGenerate={generateShareLink}
-          copyStatus={copyStatus}
-          onCopy={copyShareLink}
-        />
-        <SaveImageMenu build={build} shareUrl={shareUrl} />
+        <div className="build-toolbar-actions">
+          <ShareLinkMenu
+            shareUrl={shareUrl}
+            open={shareMenuOpen}
+            onOpenChange={setShareMenuOpen}
+            onGenerate={generateShareLink}
+            copyStatus={copyStatus}
+            onCopy={copyShareLink}
+          />
+          <SaveImageMenu build={build} shareUrl={shareUrl} />
+        </div>
         <input
-          className="min-w-[8rem] flex-1 rounded border border-[var(--border)] bg-[var(--surface-2)] px-1.5 py-0.5 text-[10px] text-[var(--muted)]"
+          className="build-toolbar-note"
           maxLength={catalog.meta.noteMaxLength}
           value={build.note ?? ""}
           onChange={(e) =>
@@ -482,9 +484,9 @@ export function BuildEditor() {
           placeholder={m.notePlaceholder}
         />
         {banner ? (
-          <span className="text-warn">{banner}</span>
+          <span className="build-toolbar-banner text-warn">{banner}</span>
         ) : null}
-        <div className="ml-auto flex items-center gap-1">
+        <div className="build-toolbar-toggles">
           <LocaleToggle />
           <ThemeToggle />
         </div>

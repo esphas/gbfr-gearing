@@ -47,11 +47,9 @@ export function BuildExportLandscape({
   );
   const rightRef = useRef<HTMLDivElement>(null);
   const headRef = useRef<HTMLDivElement>(null);
-  const noteRef = useRef<HTMLDivElement>(null);
   const [columns, setColumns] = useState<TraitLevelRow[][]>([]);
   const [panelHeight, setPanelHeight] = useState<number | undefined>(undefined);
   const [ready, setReady] = useState(false);
-  const note = build.note?.trim() ? build.note : null;
 
   useLayoutEffect(() => {
     const right = rightRef.current;
@@ -61,9 +59,7 @@ export function BuildExportLandscape({
     const measure = () => {
       const H = right.getBoundingClientRect().height;
       const headH = headRef.current?.getBoundingClientRect().height ?? 24;
-      const noteH = noteRef.current?.getBoundingClientRect().height ?? 0;
-      const noteGap = noteH > 0 ? 4 : 0;
-      const available = Math.max(0, H - noteH - noteGap - headH - 8);
+      const available = Math.max(0, H - headH - 8);
       const rowsPerCol = Math.max(
         1,
         Math.floor(available / TRAIT_ROW_HEIGHT_PX),
@@ -77,7 +73,7 @@ export function BuildExportLandscape({
     const ro = new ResizeObserver(measure);
     ro.observe(right);
     return () => ro.disconnect();
-  }, [traitSig, model.traitRows, note]);
+  }, [traitSig, model.traitRows]);
 
   return (
     <div
@@ -89,11 +85,6 @@ export function BuildExportLandscape({
           className="export-landscape-totals"
           style={panelHeight != null ? { height: panelHeight } : undefined}
         >
-          {note ? (
-            <div className="export-landscape-note" ref={noteRef}>
-              {note}
-            </div>
-          ) : null}
           <section className="export-block export-trait-totals-measured">
             <div className="export-block-head" ref={headRef}>
               {m.traitTotals}
@@ -128,7 +119,7 @@ export function BuildExportLandscape({
         <div className="export-landscape-right" ref={rightRef}>
           <div className="export-landscape-top">
             <div className="export-landscape-mid">
-              <CharacterBlock model={model} showNote={false} />
+              <CharacterBlock model={model} showNote />
               <SigilsBlock model={model} />
             </div>
             <div className="export-landscape-mastery">
