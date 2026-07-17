@@ -481,9 +481,6 @@ export function BuildEditor() {
           }
           placeholder={m.notePlaceholder}
         />
-        <button type="button" className="btn-secondary !px-2 !py-1 !text-xs" onClick={resetBuild}>
-          {m.reset}
-        </button>
         {banner ? (
           <span className="text-warn">{banner}</span>
         ) : null}
@@ -519,6 +516,13 @@ export function BuildEditor() {
                   onChange={(id) => id && switchCharacter(id)}
                 />
               </div>
+              <button
+                type="button"
+                className="btn-secondary shrink-0 self-end !px-2 !py-1.5 !text-xs"
+                onClick={resetBuild}
+              >
+                {m.reset}
+              </button>
             </div>
 
             <div className="board-block overflow-visible">

@@ -8,12 +8,12 @@
     "en": "Loading build…"
   },
   "shareLink": {
-    "zh-CN": "生成分享链接",
-    "en": "Share link"
+    "zh-CN": "保存",
+    "en": "Save"
   },
   "saveImage": {
-    "zh-CN": "保存图片",
-    "en": "Save image"
+    "zh-CN": "生成图片",
+    "en": "Generate image"
   },
   "saveImageLandscape": {
     "zh-CN": "横版",
@@ -52,8 +52,8 @@
     "en": "Changes not yet in share link"
   },
   "reset": {
-    "zh-CN": "重置",
-    "en": "Reset"
+    "zh-CN": "清空所有",
+    "en": "Clear all"
   },
   "notePlaceholder": {
     "zh-CN": "备注",
