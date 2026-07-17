@@ -438,7 +438,6 @@
       "zh-CN": "超新星",
       "en": "Supernova"
     },
-    "icon": "/assets/traits/offensive.webp",
     "maxLevel": 15,
     "restricted": true
   },
@@ -449,7 +448,6 @@
       "zh-CN": "浩劫新星",
       "en": "Catastrophe Nova"
     },
-    "icon": "/assets/traits/offensive.webp",
     "maxLevel": 35,
     "restricted": true
   },
@@ -504,7 +502,7 @@
       "zh-CN": "超凡奥秘",
       "en": "Unbound Exertion"
     },
-    "icon": "/assets/traits/dmg-cap.webp",
+    "icon": "/assets/traits/unbound.webp",
     "maxLevel": 15,
     "restricted": true
   },
@@ -515,7 +513,7 @@
       "zh-CN": "超凡技艺",
       "en": "Unbound Technique"
     },
-    "icon": "/assets/traits/dmg-cap.webp",
+    "icon": "/assets/traits/unbound.webp",
     "maxLevel": 15,
     "restricted": true
   },
@@ -526,7 +524,7 @@
       "zh-CN": "超凡强击",
       "en": "Unbound Strike"
     },
-    "icon": "/assets/traits/dmg-cap.webp",
+    "icon": "/assets/traits/unbound.webp",
     "maxLevel": 15,
     "restricted": true
   },
@@ -537,7 +535,7 @@
       "zh-CN": "超凡破限",
       "en": "Unbound Master"
     },
-    "icon": "/assets/traits/dmg-cap.webp",
+    "icon": "/assets/traits/unbound.webp",
     "maxLevel": 55,
     "restricted": true
   },
@@ -977,10 +975,30 @@
     "id": "crabby-resonance",
     "codecIndex": 100,
     "name": {
-      "zh-CN": "蟹钳的共鸣",
+      "zh-CN": "钳蟹的共鸣",
       "en": "Crabby Resonance"
     },
     "maxLevel": 45
+  },
+  {
+    "id": "crabvestment-returns",
+    "codecIndex": 109,
+    "name": {
+      "zh-CN": "钳蟹的报恩",
+      "en": "Crabvestment Returns"
+    },
+    "icon": "/assets/traits/crabby-resonance.webp",
+    "maxLevel": 15
+  },
+  {
+    "id": "immortal-shell",
+    "codecIndex": 110,
+    "name": {
+      "zh-CN": "可怕的漆黑钳蟹因子",
+      "en": "Immortal Shell"
+    },
+    "icon": "/assets/traits/crabby-resonance.webp",
+    "maxLevel": 20
   },
   {
     "id": "sumo-force",
