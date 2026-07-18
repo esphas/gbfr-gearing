@@ -991,6 +991,16 @@
     "maxLevel": 15
   },
   {
+    "id": "crabmiration",
+    "codecIndex": 111,
+    "name": {
+      "zh-CN": "终极钳蟹",
+      "en": "Crabmiration"
+    },
+    "icon": "/assets/traits/crabby-resonance.webp",
+    "maxLevel": 45
+  },
+  {
     "id": "immortal-shell",
     "codecIndex": 110,
     "name": {
@@ -999,6 +1009,16 @@
     },
     "icon": "/assets/traits/crabby-resonance.webp",
     "maxLevel": 20
+  },
+  {
+    "id": "in-a-pinch",
+    "codecIndex": 112,
+    "name": {
+      "zh-CN": "漆黑之谊",
+      "en": "In a Pinch"
+    },
+    "icon": "/assets/traits/crabby-resonance.webp",
+    "maxLevel": 15
   },
   {
     "id": "sumo-force",
