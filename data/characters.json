@@ -138,7 +138,10 @@
         "name": {
           "zh-CN": "[究极] 七星剑",
           "en": null
-        }
+        },
+        "pool": [
+          "combo-finisher-dmg"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -273,7 +276,10 @@
         "name": {
           "zh-CN": "[究极] 布尔特根",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -408,7 +414,10 @@
         "name": {
           "zh-CN": "[究极] 弗雷克格",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -543,7 +552,10 @@
         "name": {
           "zh-CN": "[究极] 双蛇十字权杖",
           "en": null
-        }
+        },
+        "pool": [
+          "charged-attack-dmg"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -678,7 +690,10 @@
         "name": {
           "zh-CN": "[究极] 龙焰铳",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -813,7 +828,10 @@
         "name": {
           "zh-CN": "[究极] 巴哈姆特之刃·终曲",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -948,7 +966,10 @@
         "name": {
           "zh-CN": "[究极] 嘉拉汀",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1083,7 +1104,10 @@
         "name": {
           "zh-CN": "[究极] 方天画戟",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1218,7 +1242,10 @@
         "name": {
           "zh-CN": "[究极] 灵驭",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1353,7 +1380,10 @@
         "name": {
           "zh-CN": "[究极] 天羽羽斩",
           "en": null
-        }
+        },
+        "pool": [
+          "skilled-assault"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1488,7 +1518,10 @@
         "name": {
           "zh-CN": "[究极] 大马士革匕首",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1623,7 +1656,10 @@
         "name": {
           "zh-CN": "[究极] 姆乔尔尼尔",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1758,7 +1794,10 @@
         "name": {
           "zh-CN": "[究极] 戈特弗里德",
           "en": null
-        }
+        },
+        "pool": [
+          "quick-charge"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -1893,7 +1932,10 @@
         "name": {
           "zh-CN": "[究极] 巴尔蒙克",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2028,7 +2070,10 @@
         "name": {
           "zh-CN": "[究极] 佐西莫斯",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2163,7 +2208,10 @@
         "name": {
           "zh-CN": "[究极] 太刀鱼",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2298,7 +2346,10 @@
         "name": {
           "zh-CN": "[究极] 迦耶伯格",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2433,7 +2484,10 @@
         "name": {
           "zh-CN": "[究极] 埃列什基伽勒",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2568,7 +2622,10 @@
         "name": {
           "zh-CN": "[究极] 薛定谔",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2703,7 +2760,10 @@
         "name": {
           "zh-CN": "[究极] 赫拉斯瓦尔格",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2826,7 +2886,10 @@
         "name": {
           "zh-CN": "[究极] 十天光辉之佩剑",
           "en": null
-        }
+        },
+        "pool": [
+          "combo-finisher-dmg"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -2949,7 +3012,10 @@
         "name": {
           "zh-CN": "[究极] 十天光辉之弯弓",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3072,7 +3138,10 @@
         "name": {
           "zh-CN": "[究极] 以弗所",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3195,7 +3264,10 @@
         "name": {
           "zh-CN": "[究极] 交途鬼契",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3318,7 +3390,10 @@
         "name": {
           "zh-CN": "[究极] 幽冥华冠",
           "en": null
-        }
+        },
+        "pool": [
+          "quick-charge"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3453,7 +3528,10 @@
         "name": {
           "zh-CN": "[究极] 巴哈姆特之剑",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3576,7 +3654,10 @@
         "name": {
           "zh-CN": "[究极] 无双矛铠",
           "en": null
-        }
+        },
+        "pool": [
+          "injury-to-insult"
+        ]
       }
     },
     "exclusiveTraits": {
@@ -3699,7 +3780,10 @@
         "name": {
           "zh-CN": "[究极] 寻梦",
           "en": null
-        }
+        },
+        "pool": [
+          "combo-booster"
+        ]
       }
     },
     "exclusiveTraits": {

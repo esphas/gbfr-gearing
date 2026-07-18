@@ -35,7 +35,7 @@ if (collisions.length > 0) {
   throw new Error(`codecIndex collisions:\n${collisions.join("\n")}`);
 }
 
-const poolSizes = Object.entries(catalog.weaponTraits)
+const poolSizes = Object.entries(catalog.weaponTraits.common)
   .map(([k, v]) => `${k}:${v.pool.length}`)
   .join(", ");
 

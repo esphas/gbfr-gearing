@@ -32,16 +32,38 @@ export function traitMapFromCatalog(
 export function assertWeaponTraitRefs(catalog: Catalog): void {
   const traitsById = traitMapFromCatalog(catalog);
   const missing: string[] = [];
-  for (const [type, entry] of Object.entries(catalog.weaponTraits)) {
+
+  for (const [type, entry] of Object.entries(catalog.weaponTraits.common)) {
     for (const id of entry.pool) {
-      if (!traitsById.has(id)) missing.push(`${type}/pool/${id}`);
+      if (!traitsById.has(id)) missing.push(`common/${type}/pool/${id}`);
     }
     for (const slot of entry.traits) {
       if (slot.id && !traitsById.has(slot.id)) {
-        missing.push(`${type}/traits/${slot.id}`);
+        missing.push(`common/${type}/traits/${slot.id}`);
       }
     }
   }
+
+  for (const [characterId, ch] of Object.entries(catalog.characters)) {
+    for (const [type, weapon] of Object.entries(ch.weapons)) {
+      if (!weapon) continue;
+      if (weapon.pool) {
+        for (const id of weapon.pool) {
+          if (!traitsById.has(id)) {
+            missing.push(`${characterId}/${type}/pool/${id}`);
+          }
+        }
+      }
+      if (weapon.traits) {
+        for (const slot of weapon.traits) {
+          if (slot.id && !traitsById.has(slot.id)) {
+            missing.push(`${characterId}/${type}/traits/${slot.id}`);
+          }
+        }
+      }
+    }
+  }
+
   if (missing.length > 0) {
     throw new Error(
       `unknown trait refs in weapon-traits: ${missing.join(", ")}`,

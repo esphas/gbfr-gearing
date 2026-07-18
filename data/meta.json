@@ -1,6 +1,6 @@
 {
   "game": "granblue-fantasy-relink",
-  "catalogVersion": 2,
+  "catalogVersion": 3,
   "localeDefault": "zh-CN",
   "slots": {
     "sigils": 12,

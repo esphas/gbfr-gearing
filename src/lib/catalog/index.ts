@@ -22,6 +22,7 @@ import {
   loadCatalog,
   traitMapFromCatalog,
 } from "./load-catalog";
+import { resolveWeaponTypeTraits } from "./resolve-weapon-traits";
 import {
   displayName,
   labelForName,
@@ -56,14 +57,22 @@ export function weaponIdFor(characterId: string, type: WeaponType): string {
 function attachWeaponTraits(
   characterId: string,
   type: WeaponType,
-  def: { name: LocalizedName; icon?: string; notes?: string },
+  def: {
+    name: LocalizedName;
+    icon?: string;
+    notes?: string;
+    traits?: Weapon["traits"];
+    pool?: string[];
+  },
 ): Weapon {
+  const resolved = resolveWeaponTypeTraits(catalog, characterId, type);
+  const { traits: _traits, pool: _pool, ...rest } = def;
   return {
-    ...def,
+    ...rest,
     type,
     id: weaponIdFor(characterId, type),
     characterId,
-    traits: catalog.weaponTraits[type].traits,
+    traits: resolved.traits,
   };
 }
 
@@ -179,9 +188,12 @@ export function getCharacterSkill(
   return catalog.characters[characterId]?.skills[index];
 }
 
-export function weaponTraitPoolFor(type: WeaponType): TraitEntry[] {
-  return catalog.weaponTraits[type].pool
-    .map((id) => getTrait(id))
+export function weaponTraitPoolFor(
+  characterId: string,
+  type: WeaponType,
+): TraitEntry[] {
+  return resolveWeaponTypeTraits(catalog, characterId, type)
+    .pool.map((id) => getTrait(id))
     .filter((t): t is TraitEntry => t !== undefined);
 }
 
@@ -197,7 +209,9 @@ export function flexibleWeaponTraitOptions(
   weaponTraitIds.forEach((id, i) => {
     if (id && i !== flexibleIndex) occupied.add(id);
   });
-  return weaponTraitPoolFor(weapon.type).filter((t) => !occupied.has(t.id));
+  return weaponTraitPoolFor(weapon.characterId, weapon.type).filter(
+    (t) => !occupied.has(t.id),
+  );
 }
 
 export function flexibleWrightstoneTraitOptions(

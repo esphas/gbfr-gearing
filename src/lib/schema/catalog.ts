@@ -59,6 +59,8 @@ export const weaponSchema = z.object({
   name: localizedNameSchema,
   icon: z.string().min(1).optional(),
   notes: z.string().optional(),
+  traits: z.array(weaponTraitSlotSchema).min(1).optional(),
+  pool: z.array(entityIdSchema).optional(),
 });
 
 export const characterWeaponsSchema = z
@@ -72,13 +74,17 @@ export const weaponTypeTraitsSchema = z.object({
   pool: z.array(entityIdSchema),
 });
 
-export const weaponTraitsFileSchema = z.object({
+export const weaponTraitsByTypeSchema = z.object({
   defender: weaponTypeTraitsSchema,
   executioner: weaponTypeTraitsSchema,
   stinger: weaponTypeTraitsSchema,
   stunner: weaponTypeTraitsSchema,
   ascension: weaponTypeTraitsSchema,
   terminus: weaponTypeTraitsSchema,
+});
+
+export const weaponTraitsFileSchema = z.object({
+  common: weaponTraitsByTypeSchema,
 });
 
 export const codecIndexSchema = z.number().int().nonnegative().max(254);
@@ -209,6 +215,7 @@ export type WeaponType = z.infer<typeof weaponTypeSchema>;
 export type WeaponTraitSlot = z.infer<typeof weaponTraitSlotSchema>;
 export type WeaponDef = z.infer<typeof weaponSchema> & { type: WeaponType };
 export type WeaponTypeTraits = z.infer<typeof weaponTypeTraitsSchema>;
+export type WeaponTraitsByType = z.infer<typeof weaponTraitsByTypeSchema>;
 export type WeaponTraitsFile = z.infer<typeof weaponTraitsFileSchema>;
 export type Weapon = WeaponDef & {
   id: string;
