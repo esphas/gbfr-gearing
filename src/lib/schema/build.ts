@@ -9,7 +9,12 @@ import type { MasteryNodeRef } from "./mastery";
 import { masteryNodeKey } from "./mastery";
 import { masteryTierSchema } from "./catalog";
 
-export const BUILD_VERSION = 1 as const;
+export const BUILD_VERSIONS = [1, 2] as const;
+export type BuildVersion = (typeof BUILD_VERSIONS)[number];
+
+export function isBuildVersion(value: unknown): value is BuildVersion {
+  return value === 1 || value === 2;
+}
 
 export const sigilSlotSchema = z.tuple([
   z.string().min(1).nullable(),
@@ -25,7 +30,7 @@ export const masteryNodeRefSchema = z.object({
 });
 
 export const buildStateSchema = z.object({
-  v: z.literal(BUILD_VERSION),
+  v: z.union([z.literal(1), z.literal(2)]),
   characterId: z.string().min(1),
   weaponType: weaponTypeSchema.nullable(),
   weaponTraitIds: z.array(z.string().nullable()),
@@ -68,9 +73,10 @@ export function createEmptyBuild(
   slots: SlotsConfig,
   weapon: Weapon | null = null,
   wrightstone: Wrightstone | null = null,
+  buildVersion: BuildVersion = 1,
 ): BuildState {
   return {
-    v: BUILD_VERSION,
+    v: buildVersion,
     characterId,
     weaponType: weapon?.type ?? null,
     weaponTraitIds: Array.from(

@@ -1,5 +1,11 @@
 import type { BuildState } from "./build";
-import type { MasteryTier, MasteryTree, Meta, Weapon } from "./catalog";
+import type {
+  MasteryDirectionCounts,
+  MasteryTier,
+  MasteryTree,
+  Meta,
+  Weapon,
+} from "./catalog";
 import { flexibleWeaponTraitCount } from "./equipment-slots";
 
 export type MasteryPointBudget = {
@@ -27,17 +33,30 @@ export function masteryNodeKey(ref: MasteryNodeRef): string {
   return `${ref.d}:${ref.tier}:${ref.i}`;
 }
 
-function tierNodeCount(meta: Meta, tier: MasteryTier): number {
-  return meta.masteryDirectionCounts[tier];
+export function resolveMasteryDirectionCounts(
+  meta: Meta,
+  override?: Partial<MasteryDirectionCounts> | null,
+): MasteryDirectionCounts {
+  return {
+    ...meta.masteryDirectionCounts,
+    ...override,
+  };
+}
+
+function tierNodeCount(
+  counts: MasteryDirectionCounts,
+  tier: MasteryTier,
+): number {
+  return counts[tier];
 }
 
 function isValidRef(
   tree: MasteryTree,
   ref: MasteryNodeRef,
-  meta: Meta,
+  directionCounts: MasteryDirectionCounts,
 ): boolean {
   if (ref.d < 0 || ref.d >= tree.length) return false;
-  const max = tierNodeCount(meta, ref.tier);
+  const max = tierNodeCount(directionCounts, ref.tier);
   return ref.i >= 0 && ref.i < max;
 }
 
@@ -45,10 +64,11 @@ export function computeMasteryPoints(
   tree: MasteryTree,
   selected: MasteryNodeRef[],
   meta: Meta,
+  directionCounts: MasteryDirectionCounts = meta.masteryDirectionCounts,
 ): MasteryPointBudget {
   const used = { tier1: 0, tier2: 0, tier3: 0, ex: 0 };
   for (const ref of selected) {
-    if (!isValidRef(tree, ref, meta)) continue;
+    if (!isValidRef(tree, ref, directionCounts)) continue;
     used[ref.tier] += 1;
   }
   return {
@@ -63,17 +83,18 @@ export function computeDirectionBonuses(
   tree: MasteryTree,
   selected: MasteryNodeRef[],
   meta: Meta,
+  directionCounts: MasteryDirectionCounts = meta.masteryDirectionCounts,
 ): DirectionBonusState[] {
   const selectedKeys = new Set(
     selected
-      .filter((ref) => isValidRef(tree, ref, meta))
+      .filter((ref) => isValidRef(tree, ref, directionCounts))
       .map(masteryNodeKey),
   );
   const thr = meta.masteryBonusThresholds;
 
   return tree.map((_, directionIndex) => {
     const countTier = (tier: MasteryTier) => {
-      const max = tierNodeCount(meta, tier);
+      const max = tierNodeCount(directionCounts, tier);
       let n = 0;
       for (let i = 0; i < max; i++) {
         if (

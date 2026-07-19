@@ -32,6 +32,7 @@ import {
   getMasteryTreeForCharacter,
   getTrait,
   getWeaponForCharacter,
+  masteryDirectionCountsFor,
   exclusiveTraitSearchTexts,
   parseExclusiveTraitId,
   resolveIcon,
@@ -44,6 +45,7 @@ import {
 import {
   buildShareSearchParams,
   parseShareSearchParams,
+  shareBuildVersionForCharacter,
 } from "@/lib/codec/build-codec";
 import {
   decodeDraftBuild,
@@ -135,7 +137,13 @@ export function BuildEditor() {
 
   const defaultCharacterId = allCharacters()[0]!.id;
   const [build, setBuild] = useState<BuildState>(() =>
-    createEmptyBuild(defaultCharacterId, catalog.meta.slots),
+    createEmptyBuild(
+      defaultCharacterId,
+      catalog.meta.slots,
+      null,
+      null,
+      shareBuildVersionForCharacter(defaultCharacterId),
+    ),
   );
   const [banner, setBanner] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
@@ -171,7 +179,10 @@ export function BuildEditor() {
     const wrightstone = next.wrightstoneId
       ? getWrightstone(next.wrightstoneId)
       : undefined;
-    return normalizeBuildSlots(next, catalog.meta.slots, weapon, wrightstone);
+    return {
+      ...normalizeBuildSlots(next, catalog.meta.slots, weapon, wrightstone),
+      v: shareBuildVersionForCharacter(next.characterId),
+    };
   }, []);
 
   const persistDraft = useCallback((next: BuildState) => {
@@ -232,10 +243,19 @@ export function BuildEditor() {
           return;
         }
       }
-      finish(createEmptyBuild(defaultCharacterId, catalog.meta.slots), {
-        fromShare: null,
-        dirty: false,
-      });
+      finish(
+        createEmptyBuild(
+          defaultCharacterId,
+          catalog.meta.slots,
+          null,
+          null,
+          shareBuildVersionForCharacter(defaultCharacterId),
+        ),
+        {
+          fromShare: null,
+          dirty: false,
+        },
+      );
       return;
     }
 
@@ -252,10 +272,19 @@ export function BuildEditor() {
     }
 
     setBanner(null);
-    finish(createEmptyBuild(defaultCharacterId, catalog.meta.slots), {
-      fromShare: null,
-      dirty: false,
-    });
+    finish(
+      createEmptyBuild(
+        defaultCharacterId,
+        catalog.meta.slots,
+        null,
+        null,
+        shareBuildVersionForCharacter(defaultCharacterId),
+      ),
+      {
+        fromShare: null,
+        dirty: false,
+      },
+    );
     /* eslint-enable react-hooks/set-state-in-effect */
   }, [shareKey, defaultCharacterId, syncNormalize, searchParams, m, setDraftMeta]);
 
@@ -331,14 +360,20 @@ export function BuildEditor() {
     [build.characterId, locale],
   );
 
+  const masteryCounts = useMemo(
+    () => masteryDirectionCountsFor(build.characterId),
+    [build.characterId],
+  );
+
   const masteryBudget = useMemo(() => {
     if (!masteryTree) return null;
     return computeMasteryPoints(
       masteryTree,
       build.masteryNodes,
       catalog.meta,
+      masteryCounts,
     );
-  }, [masteryTree, build.masteryNodes]);
+  }, [masteryTree, build.masteryNodes, masteryCounts]);
 
   const directionBonuses = useMemo(() => {
     if (!masteryTree) return [];
@@ -346,8 +381,9 @@ export function BuildEditor() {
       masteryTree,
       build.masteryNodes,
       catalog.meta,
+      masteryCounts,
     );
-  }, [masteryTree, build.masteryNodes]);
+  }, [masteryTree, build.masteryNodes, masteryCounts]);
 
   const traitLevelRows = useMemo(
     () =>
@@ -369,6 +405,7 @@ export function BuildEditor() {
           : null;
       return {
         ...prev,
+        v: shareBuildVersionForCharacter(characterId),
         characterId,
         weaponType: keptWeapon?.type ?? null,
         weaponTraitIds: keptWeapon ? prev.weaponTraitIds : [],
@@ -429,7 +466,13 @@ export function BuildEditor() {
   }, [shareUrl, m.copied, m.copyFailed]);
 
   const resetBuild = () => {
-    const empty = createEmptyBuild(build.characterId, catalog.meta.slots);
+    const empty = createEmptyBuild(
+      build.characterId,
+      catalog.meta.slots,
+      null,
+      null,
+      shareBuildVersionForCharacter(build.characterId),
+    );
     setDraftMeta({ fromShare: null, dirty: false });
     alignedShareKeyRef.current = undefined;
     setShareMenuOpen(false);
@@ -457,6 +500,7 @@ export function BuildEditor() {
         masteryTree,
         prev.masteryNodes,
         catalog.meta,
+        masteryDirectionCountsFor(prev.characterId),
       );
       if (budget[ref.tier].used >= budget[ref.tier].max) return prev;
       return { ...prev, masteryNodes: [...prev.masteryNodes, ref] };
@@ -963,8 +1007,7 @@ export function BuildEditor() {
                               </div>
                             </div>
                             {TIER_ORDER.map((tier) => {
-                              const nodeCount =
-                                catalog.meta.masteryDirectionCounts[tier];
+                              const nodeCount = masteryCounts[tier];
                               const rowCount = Math.ceil(nodeCount / 2);
                               return (
                                 <div key={tier} className="mastery-tier">

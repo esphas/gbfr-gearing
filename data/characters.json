@@ -5,6 +5,9 @@
       "zh-CN": "古兰 / 姬塔",
       "en": "Gran / Djeeta"
     },
+    "masteryDirectionCounts": {
+      "ex": 14
+    },
     "skills": [
       {
         "name": {

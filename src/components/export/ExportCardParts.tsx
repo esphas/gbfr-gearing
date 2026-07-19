@@ -10,6 +10,7 @@ import {
   getTrait,
   getWeaponForCharacter,
   getWrightstone,
+  masteryDirectionCountsFor,
   resolveIcon,
   traitIconSrc,
 } from "@/lib/catalog";
@@ -202,18 +203,20 @@ export function MasteryDirectionBlock({
   dirIndex,
   dirName,
   selectedKeys,
+  nodeCounts,
   m,
 }: {
   dirIndex: number;
   dirName: string;
   selectedKeys: Set<string>;
+  nodeCounts: ReturnType<typeof masteryDirectionCountsFor>;
   m: UiMessages;
 }) {
   return (
     <div className={`export-mastery-dir export-mastery-dir--${dirIndex}`}>
       <div className="export-mastery-dir-head">{dirName}</div>
       {TIER_ORDER.map((tier) => {
-        const nodeCount = catalog.meta.masteryDirectionCounts[tier];
+        const nodeCount = nodeCounts[tier];
         return (
           <div key={tier} className="export-mastery-tier">
             <div className="export-mastery-tier-label">{tierLabel(tier, m)}</div>
@@ -313,10 +316,11 @@ export function SigilsBlock({ model }: { model: ExportCardModel }) {
 }
 
 export function MasterySideBySide({ model }: { model: ExportCardModel }) {
-  const { m, locale, masteryTree, selectedKeys } = model;
+  const { m, locale, masteryTree, selectedKeys, build } = model;
   if (!masteryTree) {
     return <p className="export-empty">{m.noMasteryData}</p>;
   }
+  const nodeCounts = masteryDirectionCountsFor(build.characterId);
   return (
     <div className="export-mastery-grid">
       {masteryTree.map((dir, dirIdx) => (
@@ -327,6 +331,7 @@ export function MasterySideBySide({ model }: { model: ExportCardModel }) {
             resolveLocalizedName(dir.name, locale) ?? dir.name["zh-CN"]
           }
           selectedKeys={selectedKeys}
+          nodeCounts={nodeCounts}
           m={m}
         />
       ))}

@@ -1,44 +1,58 @@
 /**
- * Share codec：URL `/?v=1&b=<Base64URL>`，`b` 为二进制帧。
+ * Share codec：URL `/?v=<1|2>&b=<Base64URL>`，`b` 为二进制帧。
  *
  * 帧内实体用稳定 `codecIndex`（见 `catalog-indices.ts`）：`0`=空，否则「下标+1」。
  * 解码接受 `encodedCatalogVersion <= current`（附加兼容）；更高版本拒绝。
  * 未知 trait/祝福下标降为 `null`。
  * 未知角色下标失败。
  *
- * ## 帧布局（字节序）
+ * ## Build 版本
+ *
+ * | 版本 | 专精位图 | 选用 |
+ * |------|----------|------|
+ * | 1 | 3×30 节点（ex×10），12 字节 | 默认角色 |
+ * | 2 | 按角色 `masteryDirectionCounts`（captain ex×14 → 3×34），变长 | 需更大 EX 的角色 |
+ *
+ * 编码按角色自动选版本；解码同时接受 v1 / v2（团长可打开旧 v1 链接）。
+ *
+ * ## 帧布局（字节序，v1 / v2 前缀相同）
  *
  * | 偏移 | 长 | 字段 |
  * |------|-----|------|
  * | 0 | 1 | 魔数 `0x52`（`R`） |
- * | 1 | 1 | Build 版本（`BUILD_VERSION`） |
+ * | 1 | 1 | Build 版本（1 或 2） |
  * | 2 | 1 | `catalogVersion`（`meta.json`） |
  * | 3 | 1 | 角色下标 |
- * | 4 | 1 | 高 4 位：武器定位（`0`=无，`1–6`=枚举下标+1）；低 4 位：祝福（`0`=无，`1–n`=下标+1） |
+ * | 4 | 1 | 高 4 位：武器定位；低 4 位：祝福 |
  * | 5 | 2 | 武器可配 trait |
  * | 7 | 2 | 祝福可配 trait |
- * | 9 | 24 | 因子槽 ×12（每槽 2 trait） |
- * | 33 | 4 | 技能槽（角色 `skills[]` 下标+1） |
- * | 37 | 4 | 召唤石技能（trait 下标+1） |
- * | 41 | 12 | 专精位图（90 bit，LSB-first） |
- * | 53 | 1+N | 备注：`uint8` 长度 + UTF-8（最长 `meta.noteMaxLength`） |
+ * | 9 | 24 | 因子槽 ×12 |
+ * | 33 | 4 | 技能槽 |
+ * | 37 | 4 | 召唤石技能 |
+ * | 41 | 12 或 N | 专精位图（LSB-first） |
+ * | … | 1+N | 备注 |
  *
  * ## 专精位图
  *
- * 3 方向 × 每方向 30 节点：`tier1×4` + `tier2×8` + `tier3×8` + `ex×10`。
- * 全局 bit = `方向×30 + 档内偏移 + 节点下标`（对应 Build 的 `d` / `tier` / `i`）。
+ * 全局 bit = `方向×stride + 档内偏移 + 节点下标`。
+ * v1：`stride=30`，`tier1×4 + tier2×8 + tier3×8 + ex×10`。
+ * v2：`stride` 由角色方向节点数决定。
  *
  */
-import { catalog } from "@/lib/catalog";
-import type { BuildState } from "@/lib/schema/build";
+import { catalog, masteryDirectionCountsFor } from "@/lib/catalog";
+import type { BuildState, BuildVersion } from "@/lib/schema/build";
 import {
-  BUILD_VERSION,
   buildStateSchema,
+  isBuildVersion,
   isSigilSlotEmpty,
   normalizeSigilSlot,
 } from "@/lib/schema/build";
 import type { MasteryNodeRef } from "@/lib/schema/mastery";
-import type { MasteryTier, WeaponType } from "@/lib/schema/catalog";
+import type {
+  MasteryDirectionCounts,
+  MasteryTier,
+  WeaponType,
+} from "@/lib/schema/catalog";
 import {
   BinaryReader,
   BinaryWriter,
@@ -60,48 +74,92 @@ const MAGIC = 0x52;
 const WEAPON_TRAIT_BYTES = 2;
 const WRIGHTSTONE_TRAIT_BYTES = 2;
 const MASTERY_DIRECTIONS = 3;
-const MASTERY_BITMAP_BITS = 90;
-const MASTERY_BITMAP_BYTES = 12;
 
-const TIER_BASE: Record<MasteryTier, number> = {
-  tier1: 0,
-  tier2: 4,
-  tier3: 12,
-  ex: 20,
+const TIER_ORDER: MasteryTier[] = ["tier1", "tier2", "tier3", "ex"];
+
+type MasteryLayout = {
+  stride: number;
+  bitCount: number;
+  byteCount: number;
+  tierBase: Record<MasteryTier, number>;
+  tierCounts: MasteryDirectionCounts;
 };
 
-const TIER_COUNTS: Record<MasteryTier, number> = {
+const V1_COUNTS: MasteryDirectionCounts = {
   tier1: 4,
   tier2: 8,
   tier3: 8,
   ex: 10,
 };
 
-const TIER_ORDER: MasteryTier[] = ["tier1", "tier2", "tier3", "ex"];
-
-function masteryBitIndex(ref: MasteryNodeRef): number {
-  return ref.d * 30 + TIER_BASE[ref.tier] + ref.i;
+function layoutFromCounts(counts: MasteryDirectionCounts): MasteryLayout {
+  const tierBase: Record<MasteryTier, number> = {
+    tier1: 0,
+    tier2: counts.tier1,
+    tier3: counts.tier1 + counts.tier2,
+    ex: counts.tier1 + counts.tier2 + counts.tier3,
+  };
+  const stride =
+    counts.tier1 + counts.tier2 + counts.tier3 + counts.ex;
+  const bitCount = MASTERY_DIRECTIONS * stride;
+  return {
+    stride,
+    bitCount,
+    byteCount: Math.ceil(bitCount / 8),
+    tierBase,
+    tierCounts: counts,
+  };
 }
 
-function masteryNodesToBitmap(nodes: MasteryNodeRef[]): Uint8Array {
-  const bits = Array.from({ length: MASTERY_BITMAP_BITS }, () => false);
+const V1_LAYOUT = layoutFromCounts(V1_COUNTS);
+
+/** 分享编码版本：方向节点超出 v1（30/向）时用 v2 */
+export function shareBuildVersionForCharacter(
+  characterId: string,
+): BuildVersion {
+  const counts = masteryDirectionCountsFor(characterId);
+  const stride =
+    counts.tier1 + counts.tier2 + counts.tier3 + counts.ex;
+  return stride > V1_LAYOUT.stride ? 2 : 1;
+}
+
+function layoutForVersion(
+  version: BuildVersion,
+  characterId: string,
+): MasteryLayout {
+  if (version === 1) return V1_LAYOUT;
+  return layoutFromCounts(masteryDirectionCountsFor(characterId));
+}
+
+function masteryBitIndex(layout: MasteryLayout, ref: MasteryNodeRef): number {
+  return ref.d * layout.stride + layout.tierBase[ref.tier] + ref.i;
+}
+
+function masteryNodesToBitmap(
+  layout: MasteryLayout,
+  nodes: MasteryNodeRef[],
+): Uint8Array {
+  const bits = Array.from({ length: layout.bitCount }, () => false);
   for (const ref of nodes) {
     if (ref.d < 0 || ref.d >= MASTERY_DIRECTIONS) continue;
-    const max = TIER_COUNTS[ref.tier];
+    const max = layout.tierCounts[ref.tier];
     if (ref.i < 0 || ref.i >= max) continue;
-    bits[masteryBitIndex(ref)] = true;
+    bits[masteryBitIndex(layout, ref)] = true;
   }
-  return bitsToBytes(bits, MASTERY_BITMAP_BYTES);
+  return bitsToBytes(bits, layout.byteCount);
 }
 
-function bitmapToMasteryNodes(bytes: Uint8Array): MasteryNodeRef[] {
-  const bits = bytesToBits(bytes, MASTERY_BITMAP_BITS);
+function bitmapToMasteryNodes(
+  layout: MasteryLayout,
+  bytes: Uint8Array,
+): MasteryNodeRef[] {
+  const bits = bytesToBits(bytes, layout.bitCount);
   const nodes: MasteryNodeRef[] = [];
   for (let d = 0; d < MASTERY_DIRECTIONS; d++) {
     for (const tier of TIER_ORDER) {
-      const count = TIER_COUNTS[tier];
+      const count = layout.tierCounts[tier];
       for (let i = 0; i < count; i++) {
-        if (bits[masteryBitIndex({ d, tier, i })]) {
+        if (bits[masteryBitIndex(layout, { d, tier, i })]) {
           nodes.push({ d, tier, i });
         }
       }
@@ -182,9 +240,12 @@ function encodeBinary(build: BuildState): Uint8Array {
     throw new Error(`unknown character id: ${build.characterId}`);
   }
 
+  const version = shareBuildVersionForCharacter(build.characterId);
+  const masteryLayout = layoutForVersion(version, build.characterId);
+
   const writer = new BinaryWriter();
   writer.writeU8(MAGIC);
-  writer.writeU8(BUILD_VERSION);
+  writer.writeU8(version);
   writer.writeU8(catalog.meta.catalogVersion);
   writer.writeU8(characterIndex);
 
@@ -219,7 +280,7 @@ function encodeBinary(build: BuildState): Uint8Array {
     writeTraitRef(writer, summonId);
   }
 
-  writer.writeBytes(masteryNodesToBitmap(build.masteryNodes));
+  writer.writeBytes(masteryNodesToBitmap(masteryLayout, build.masteryNodes));
 
   const note = build.note?.slice(0, catalog.meta.noteMaxLength) ?? "";
   const noteBytes = note ? new TextEncoder().encode(note) : new Uint8Array();
@@ -241,9 +302,12 @@ function decodeBinary(bytes: Uint8Array): BuildState {
   if (reader.readU8() !== MAGIC) {
     throw new Error("invalid magic");
   }
-  if (reader.readU8() !== BUILD_VERSION) {
+  const versionRaw = reader.readU8();
+  if (!isBuildVersion(versionRaw)) {
     throw new Error("unsupported build version");
   }
+  const version = versionRaw;
+
   const encodedCatalogVersion = reader.readU8();
   if (encodedCatalogVersion > catalog.meta.catalogVersion) {
     throw new Error("catalog version mismatch");
@@ -283,7 +347,11 @@ function decodeBinary(bytes: Uint8Array): BuildState {
     summonSlots.push(readTraitRef(reader));
   }
 
-  const masteryNodes = bitmapToMasteryNodes(reader.readBytes(MASTERY_BITMAP_BYTES));
+  const masteryLayout = layoutForVersion(version, characterId);
+  const masteryNodes = bitmapToMasteryNodes(
+    masteryLayout,
+    reader.readBytes(masteryLayout.byteCount),
+  );
 
   const noteLen = reader.readU8();
   let note: string | undefined;
@@ -295,7 +363,7 @@ function decodeBinary(bytes: Uint8Array): BuildState {
   }
 
   return {
-    v: BUILD_VERSION,
+    v: version,
     characterId,
     weaponType,
     weaponTraitIds,
@@ -357,8 +425,9 @@ export function decodeBuild(payload: string): DecodeResult {
 }
 
 export function buildShareSearchParams(build: BuildState): URLSearchParams {
+  const version = shareBuildVersionForCharacter(build.characterId);
   const params = new URLSearchParams();
-  params.set("v", String(BUILD_VERSION));
+  params.set("v", String(version));
   params.set("b", encodeBuild(build));
   return params;
 }
@@ -380,7 +449,8 @@ export function parseShareSearchParams(
   if (!v && !b) {
     return { kind: "empty" };
   }
-  if (v !== String(BUILD_VERSION)) {
+  const versionNum = v != null ? Number(v) : NaN;
+  if (!isBuildVersion(versionNum)) {
     return { kind: "error", code: "unsupported_version", detail: v };
   }
   if (!b) {
@@ -389,6 +459,9 @@ export function parseShareSearchParams(
   const decoded = decodeBuild(b);
   if (!decoded.ok) {
     return { kind: "error", code: decoded.code };
+  }
+  if (decoded.build.v !== versionNum) {
+    return { kind: "error", code: "invalid", detail: "version mismatch" };
   }
   return { kind: "build", build: decoded.build };
 }

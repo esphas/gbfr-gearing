@@ -2,6 +2,7 @@ import type {
   Catalog,
   Character,
   CharacterSkill,
+  MasteryDirectionCounts,
   MasteryTree,
   TraitEntry,
   Weapon,
@@ -17,6 +18,7 @@ import {
   parseExclusiveTraitId,
   type ExclusiveTraitSlot,
 } from "@/lib/schema/exclusive-traits";
+import { resolveMasteryDirectionCounts } from "@/lib/schema/mastery";
 import {
   assertWeaponTraitRefs,
   loadCatalog,
@@ -159,6 +161,15 @@ export function getMasteryTreeForCharacter(
   characterId: string,
 ): MasteryTree | undefined {
   return catalog.characters[characterId]?.masteries;
+}
+
+export function masteryDirectionCountsFor(
+  characterId: string,
+): MasteryDirectionCounts {
+  return resolveMasteryDirectionCounts(
+    catalog.meta,
+    catalog.characters[characterId]?.masteryDirectionCounts,
+  );
 }
 
 export function weaponsForCharacter(characterId: string): Weapon[] {

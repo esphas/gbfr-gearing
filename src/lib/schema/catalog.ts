@@ -22,6 +22,13 @@ export const masteryBonusThresholdsSchema = z.object({
   tier3: z.number().int().positive(),
 });
 
+export const masteryDirectionCountsSchema = z.object({
+  tier1: z.number().int().positive(),
+  tier2: z.number().int().positive(),
+  tier3: z.number().int().positive(),
+  ex: z.number().int().positive(),
+});
+
 export const metaSchema = z.object({
   game: z.literal("granblue-fantasy-relink"),
   catalogVersion: z.number().int().positive(),
@@ -30,14 +37,12 @@ export const metaSchema = z.object({
   sigilDefaultLevel: z.number().int().positive().default(15),
   masteryPoints: masteryPointsSchema,
   masteryBonusThresholds: masteryBonusThresholdsSchema,
-  masteryDirectionCounts: z
-    .object({
-      tier1: z.number().int().positive(),
-      tier2: z.number().int().positive(),
-      tier3: z.number().int().positive(),
-      ex: z.number().int().positive(),
-    })
-    .default({ tier1: 4, tier2: 8, tier3: 8, ex: 10 }),
+  masteryDirectionCounts: masteryDirectionCountsSchema.default({
+    tier1: 4,
+    tier2: 8,
+    tier3: 8,
+    ex: 10,
+  }),
   noteMaxLength: z.number().int().positive().default(64),
 });
 
@@ -165,6 +170,7 @@ export const characterSchema = z.object({
   weapons: characterWeaponsSchema,
   exclusiveTraits: exclusiveTraitsSchema,
   masteries: z.array(masteryDirectionSchema).length(3),
+  masteryDirectionCounts: masteryDirectionCountsSchema.partial().optional(),
 });
 
 export const charactersFileSchema = z
@@ -205,6 +211,9 @@ export const catalogSchema = z.object({
 });
 
 export type MasteryTier = z.infer<typeof masteryTierSchema>;
+export type MasteryDirectionCounts = z.infer<
+  typeof masteryDirectionCountsSchema
+>;
 export type SlotsConfig = z.infer<typeof slotsConfigSchema>;
 export type Meta = z.infer<typeof metaSchema>;
 export type CharacterDef = z.infer<typeof characterSchema>;

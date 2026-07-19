@@ -3,13 +3,14 @@ import { catalog } from "@/lib/catalog";
 import {
   decodeBuild,
   encodeBuild,
+  shareBuildVersionForCharacter,
 } from "@/lib/codec/build-codec";
-import { BUILD_VERSION, type BuildState } from "@/lib/schema/build";
+import { isBuildVersion, type BuildState } from "@/lib/schema/build";
 
 export const BUILD_DRAFT_STORAGE_KEY = "relink-build-draft";
 
 const buildDraftSchema = z.object({
-  buildVersion: z.literal(BUILD_VERSION),
+  buildVersion: z.union([z.literal(1), z.literal(2)]),
   catalogVersion: z.number().int().positive(),
   payload: z.string().min(1),
   fromShare: z.string().nullable(),
@@ -31,7 +32,8 @@ export function shareFingerprint(
 }
 
 export function fingerprintForBuild(build: BuildState): string {
-  return `v=${BUILD_VERSION}&b=${encodeBuild(build)}`;
+  const version = shareBuildVersionForCharacter(build.characterId);
+  return `v=${version}&b=${encodeBuild(build)}`;
 }
 
 export function readBuildDraft(): BuildDraft | null {
@@ -42,6 +44,7 @@ export function readBuildDraft(): BuildDraft | null {
     const draft = buildDraftSchema.safeParse(parsed);
     if (!draft.success) return null;
     if (draft.data.catalogVersion > catalog.meta.catalogVersion) return null;
+    if (!isBuildVersion(draft.data.buildVersion)) return null;
     return draft.data;
   } catch {
     return null;
@@ -55,7 +58,7 @@ export function writeBuildDraft(input: {
 }): void {
   try {
     const draft: BuildDraft = {
-      buildVersion: BUILD_VERSION,
+      buildVersion: shareBuildVersionForCharacter(input.build.characterId),
       catalogVersion: catalog.meta.catalogVersion,
       payload: encodeBuild(input.build),
       fromShare: input.fromShare,
