@@ -200,7 +200,7 @@
       "en": "Berserker Echo"
     },
     "icon": "/assets/traits/offensive.webp",
-    "maxLevel": 30
+    "maxLevel": 15
   },
   {
     "id": "spartan-echo",
