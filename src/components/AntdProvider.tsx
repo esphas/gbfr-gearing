@@ -67,7 +67,8 @@ export function AntdProvider({ children }: Props) {
       token: {
         colorPrimary: primary,
         colorInfo: primary,
-        fontFamily: "var(--font-body), 'Segoe UI', sans-serif",
+        fontFamily:
+          "var(--font-body), 'PingFang SC', 'Microsoft YaHei', 'Segoe UI', sans-serif",
         borderRadius: 6,
       },
     }),

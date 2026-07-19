@@ -56,7 +56,8 @@ body {
   min-height: 100%;
   background: var(--ant-color-bg-layout, var(--background));
   color: var(--ant-color-text, var(--foreground));
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body), "PingFang SC", "Microsoft YaHei", "Segoe UI",
+    sans-serif;
 }
 
 .build-header.ant-layout-header {
@@ -140,7 +141,8 @@ body {
   white-space: pre;
   border: 0;
   pointer-events: none;
-  font-family: var(--font-body), "Segoe UI", sans-serif;
+  font-family: var(--font-body), "PingFang SC", "Microsoft YaHei", "Segoe UI",
+    sans-serif;
   font-weight: 400;
   font-size: 16px;
   color: transparent;
@@ -413,7 +415,8 @@ body {
   box-sizing: border-box;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body), sans-serif;
+  font-family: var(--font-body), "PingFang SC", "Microsoft YaHei", "Segoe UI",
+    sans-serif;
   padding: 0.5rem;
   display: flex;
   flex-direction: column;
