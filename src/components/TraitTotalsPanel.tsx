@@ -28,7 +28,7 @@ export function TraitTotalsPanel({ rows, characterId }: Props) {
             const trait = getTrait(row.id, characterId);
             const total = row.gear + row.sigil;
             const maxOver =
-              trait?.maxLevel != null && total > trait.maxLevel + 5;
+              trait?.maxLevel != null && total > trait.maxLevel + 6;
             return (
               <Flex
                 key={row.id}
