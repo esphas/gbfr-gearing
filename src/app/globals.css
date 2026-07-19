@@ -404,6 +404,11 @@ body {
   margin-left: 0.15rem;
 }
 
+.trait-level-max--warn {
+  color: var(--ant-color-warning, #faad14);
+  font-weight: 600;
+}
+
 .export-card {
   box-sizing: border-box;
   background: var(--background);

@@ -26,6 +26,9 @@ export function TraitTotalsPanel({ rows, characterId }: Props) {
         <Flex vertical>
           {rows.map((row, index) => {
             const trait = getTrait(row.id, characterId);
+            const total = row.gear + row.sigil;
+            const maxOver =
+              trait?.maxLevel != null && total > trait.maxLevel + 5;
             return (
               <Flex
                 key={row.id}
@@ -70,7 +73,9 @@ export function TraitTotalsPanel({ rows, characterId }: Props) {
                     <span className="trait-level-sigil">{row.sigil}</span>
                   ) : null}
                   {trait?.maxLevel != null ? (
-                    <span className="trait-level-max">
+                    <span
+                      className={`trait-level-max${maxOver ? " trait-level-max--warn" : ""}`}
+                    >
                       (MAX {trait.maxLevel})
                     </span>
                   ) : null}
