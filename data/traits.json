@@ -880,6 +880,15 @@
     "maxLevel": 30
   },
   {
+    "id": "natural-defenses",
+    "codecIndex": 113,
+    "name": {
+      "zh-CN": "全弱化效果抗性",
+      "en": "Natural Defenses"
+    },
+    "maxLevel": 30
+  },
+  {
     "id": "potion-hoarder",
     "codecIndex": 90,
     "name": {
